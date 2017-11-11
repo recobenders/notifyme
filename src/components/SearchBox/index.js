@@ -8,7 +8,11 @@ class SearchBox extends Component {
 
     getOptions = (input) => {
         const types = [
-            Knowledge.types.thing
+            Knowledge.types.movies,
+            Knowledge.types.musicAlbum,
+            Knowledge.types.tvEpisode,
+            Knowledge.types.tvSeries,
+            Knowledge.types.videoGame
         ];
         const limit = 10;
         let params;
