@@ -7,6 +7,7 @@ class ItemList extends Component {
     render() {
         return (
             <div>
+                <h2>Item list view</h2>
                 <SearchContainer />
                 <ItemPreviewListContainer/>
             </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import ItemList from "./components/views/ItemList";
+import Item from "./components/views/Item";
 
-ReactDOM.render(<ItemList />, document.getElementById('root'));
+ReactDOM.render(<Item />, document.getElementById('root'));
 registerServiceWorker();

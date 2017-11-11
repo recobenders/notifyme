@@ -5,7 +5,10 @@ class Landing extends Component {
 
     render() {
         return (
-            <SearchContainer />
+            <div>
+                <h2>Landing view</h2>
+                <SearchContainer />
+            </div>
         );
     }
 }
