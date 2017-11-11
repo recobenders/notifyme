@@ -4,13 +4,13 @@ import SearchResultItem from "../../components/SearchResultItem";
 class SearchResult extends Component {
 
     render() {
-        let resultItems = ['Dunkirk', 'Batman', 'Psycho'];
+        const searchResult = this.props;
         return (
             <div>
                 Search Results:
                 {
-                    resultItems.map((item, index) => {
-                        return <SearchResultItem item={item} key={index}/>;
+                    searchResult.searchResults.map((item, index) => {
+                        return <SearchResultItem item={item.result.name} key={index}/>;
                     })
                 }
             </div>
