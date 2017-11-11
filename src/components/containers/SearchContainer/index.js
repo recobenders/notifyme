@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import SearchBox from "../../SearchBox";
-import SearchResult from "../../SearchResult";
 import { withRouter } from 'react-router-dom'
 import Grid from 'material-ui/Grid';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from 'material-ui/styles'
+import SearchResult from "../../SearchResult";
 
 const styles = theme => ({
     root: {
         flexGrow: 1,
         marginTop: 30,
-    }
+    },
 });
 
 class SearchContainer extends Component {
@@ -34,15 +34,20 @@ class SearchContainer extends Component {
 
         return (
             <div className={classes.root}>
-                <Grid container>
+                <Grid container justify="center">
                     <Grid item xs={12}>
                         <SearchBox
                             handleResultUpdate={this.handleResultUpdate}
                             handleResultSubmit={this.handleResultSubmit}
+                            buttonText={this.props.buttonText}
                         />
                     </Grid>
+                    <Grid item xs={7}>
+                        {
+                            <SearchResult searchResults={this.state.searchResults}/>
+                        }
+                    </Grid>
                 </Grid>
-                <SearchResult searchResults={this.state.searchResults}/>
             </div>
         );
     }
