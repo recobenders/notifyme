@@ -11,7 +11,7 @@ class InfoContainer extends Component {
                     Name: {item.name}
                 </p>
                 <p>
-                    Type: {item['@type'].join(', c')}
+                    Type: {item['@type'].join(',')}
                 </p>
                 <p>
                     Description: {item.description}
