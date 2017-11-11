@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import Item from "./components/views/Item";
+import Landing from "./components/views/Landing";
 
-ReactDOM.render(<Item />, document.getElementById('root'));
+ReactDOM.render(<Landing />, document.getElementById('root'));
 registerServiceWorker();
