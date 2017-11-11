@@ -4,6 +4,9 @@ class InfoContainer extends Component {
 
     render() {
         const item = this.props.item;
+        const description = item.description  || 'N/A';
+        const detailedDescription = (item.detailedDescription === undefined ||
+            item.detailedDescription.articleBody === undefined ) ? 'N/A' : item.detailedDescription.articleBody;
         console.log(item);
         return (
             <div>
@@ -11,16 +14,16 @@ class InfoContainer extends Component {
                     Name: {item.name}
                 </p>
                 <p>
-                    Type: {item['@type'].join(',')}
+                    Type: {item['@type'].join(',') || 'N/A'}
                 </p>
                 <p>
-                    Description: {item.description}
+                    Description: {description}
                 </p>
                 <p>
-                    Detailed Description: {item.detailedDescription.articleBody}
+                    Detailed Description: {detailedDescription}
                 </p>
                 <p>
-                    Link: {item.url}
+                    Link: {item.url || 'N/A'}
                 </p>
             </div>
         );
