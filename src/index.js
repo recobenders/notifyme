@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Landing from './components/views/Landing'
 import registerServiceWorker from './registerServiceWorker';
+import ItemList from "./components/views/ItemList";
 
-ReactDOM.render(<Landing />, document.getElementById('root'));
+ReactDOM.render(<ItemList />, document.getElementById('root'));
 registerServiceWorker();
