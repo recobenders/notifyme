@@ -7,9 +7,14 @@ class InfoContainer extends Component {
         const description = item.description  || 'N/A';
         const detailedDescription = (item.detailedDescription === undefined ||
             item.detailedDescription.articleBody === undefined ) ? 'N/A' : item.detailedDescription.articleBody;
-        console.log(item);
+        let imageUrl = null;
+        if(item.image) imageUrl = item.image.contentUrl;
+
         return (
             <div>
+                { imageUrl &&
+                    <img src={imageUrl} alt={item.name} />
+                }
                 <p>
                     Name: {item.name}
                 </p>
