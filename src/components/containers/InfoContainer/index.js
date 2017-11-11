@@ -43,12 +43,12 @@ class InfoContainer extends Component {
                     <Grid item xs={6}>
                         <img
                             src={this.state.imageSrc}
-                            alt={item.name}
+                            alt={item.name.replace(/&amp;/g, '&')}
                         />
                     </Grid>
                     <Grid item xs={6}>
                         <p>
-                            Name: {item.name}
+                            Name: {item.name.replace(/&amp;/g, '&')}
                         </p>
                         <p>
                             Type: {item['@type'].join(',') || 'N/A'}

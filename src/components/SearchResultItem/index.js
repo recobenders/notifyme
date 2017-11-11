@@ -56,7 +56,6 @@ class SearchResultItem extends Component {
 
     getAvatarIcon = (classes, item) => {
         let mediaType = item['@type'].find(function (el) { return el !== 'Thing' });
-        console.log(mediaType);
         if(mediaType === 'Movie'){
             return <MovieIcon className={classes.svgIcon}/>
         } else if(mediaType === 'TVSeries' || mediaType === 'TVEpisode'){
@@ -94,7 +93,7 @@ class SearchResultItem extends Component {
                 <div>
                     <CardContent className={classes.content}>
                         <div className={classes.details}>
-                            <Typography type="title">{item.name}</Typography>
+                            <Typography type="title">{item.name.replace(/&amp;/g, '&')}</Typography>
                             <Typography type="subheading" color="secondary">
                                 {item.description}
                             </Typography>
