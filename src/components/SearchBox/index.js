@@ -22,10 +22,10 @@ class SearchBox extends Component {
         return Knowledge.search(params)
             .then(body => {
                 this.props.handleResultUpdate(body.itemListElement);
-                return { options: body.itemListElement.map((item) => ({
-                    label: item.result.name,
-                    value: item.result.name
-                })) };
+                // return { options: body.itemListElement.map((item) => ({
+                //     label: item.result.name,
+                //     value: item.result.name
+                // })) };
             })
             .catch(error => {
                 return { options: [] };
