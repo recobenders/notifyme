@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
+import { withStyles } from 'material-ui/styles';
+import Button from 'material-ui/Button';
+
+const styles = theme => ({
+    button: {
+        margin: theme.spacing.unit,
+    }
+});
 
 const Knowledge = require('knowledge-node')({ serverKey: process.env.REACT_APP_KNOWLEDGE_API_KEY });
 
@@ -37,19 +45,23 @@ class SearchBox extends Component {
     };
 
     render() {
+        const { classes } = this.props;
+
         return (
             <div>
-                <div onClick={this.props.handleResultSubmit}>
+                <div >
                     Submit and get to ItemList
                 </div>
                 <Select.Async
                     name="search_box"
                     loadOptions={this.getOptions}
                 />
-
+                <Button raised className={classes.button} onClick={this.props.handleResultSubmit}>
+                    Default
+                </Button>
             </div>
         );
     }
 }
 
-export default SearchBox;
+export default withStyles(styles)(SearchBox);

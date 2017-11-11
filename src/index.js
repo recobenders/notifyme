@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import store, { history } from './store';
 import routes from './routes';
+import 'typeface-roboto'
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
