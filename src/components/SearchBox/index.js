@@ -35,10 +35,14 @@ class SearchBox extends Component {
     render() {
         return (
             <div>
+                <div onClick={this.props.handleResultSubmit}>
+                    Submit and get to ItemList
+                </div>
                 <Select.Async
                     name="search_box"
                     loadOptions={this.getOptions}
                 />
+
             </div>
         );
     }

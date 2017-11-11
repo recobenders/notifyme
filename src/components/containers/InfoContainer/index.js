@@ -4,9 +4,13 @@ class InfoContainer extends Component {
 
     render() {
         const item = this.props.item;
-        console.log(item);
+        let imageUrl = null;
+        if(item.image) imageUrl = item.image.contentUrl;
         return (
             <div>
+                { imageUrl &&
+                    <img src={imageUrl} alt={item.name} />
+                }
                 <p>
                     Name: {item.name}
                 </p>

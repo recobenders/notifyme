@@ -10,7 +10,7 @@ class SearchResult extends Component {
                 Search Results:
                 {
                     searchResult.searchResults.map((item, index) => {
-                        return <SearchResultItem item={item.result} key={index}/>;
+                        return <SearchResultItem item={item} key={index}/>;
                     })
                 }
             </div>
