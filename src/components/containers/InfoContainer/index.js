@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Grid from 'material-ui/Grid';
+import Paper from 'material-ui/Paper';
 
 class InfoContainer extends Component {
 
@@ -12,24 +14,30 @@ class InfoContainer extends Component {
 
         return (
             <div>
-                { imageUrl &&
-                    <img src={imageUrl} alt={item.name} />
-                }
-                <p>
-                    Name: {item.name}
-                </p>
-                <p>
-                    Type: {item['@type'].join(',') || 'N/A'}
-                </p>
-                <p>
-                    Description: {description}
-                </p>
-                <p>
-                    Detailed Description: {detailedDescription}
-                </p>
-                <p>
-                    Link: {item.url || 'N/A'}
-                </p>
+                <Grid container spacing={24}>
+                    <Grid item xs={6}>
+                        { imageUrl &&
+                        <img src={imageUrl} alt={item.name} />
+                        }
+                    </Grid>
+                    <Grid item xs={6}>
+                        <p>
+                            Name: {item.name}
+                        </p>
+                        <p>
+                            Type: {item['@type'].join(',') || 'N/A'}
+                        </p>
+                        <p>
+                            Description: {description}
+                        </p>
+                        <p>
+                            Detailed Description: {detailedDescription}
+                        </p>
+                        <p>
+                            Link: {item.url || 'N/A'}
+                        </p>
+                    </Grid>
+                </Grid>
             </div>
         );
     }

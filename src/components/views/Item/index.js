@@ -3,6 +3,7 @@ import axios from 'axios';
 import wdk from 'wikidata-sdk';
 import InfoContainer from "../../containers/InfoContainer";
 import NotifyContainer from "../../containers/NotifyContainer";
+import Grid from 'material-ui/Grid';
 
 class Item extends Component {
     constructor(props) {
@@ -35,9 +36,13 @@ LIMIT 10
         if(item == null) return null;
         return (
             <div>
-                <h2>Item view #{item.name}</h2>
-                <InfoContainer item={item}/>
-                <NotifyContainer item={item} releaseDates={this.state.releaseDates}/>
+                <Grid container spacing={24}>
+                    <Grid item xs={12}>
+                        <h2>Item view #{item.name}</h2>
+                        <InfoContainer item={item}/>
+                        <NotifyContainer item={item} releaseDates={this.state.releaseDates}/>
+                    </Grid>
+                </Grid>
             </div>
         );
     }
