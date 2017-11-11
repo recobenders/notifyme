@@ -1,8 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'react-router-redux';
+import store, { history } from './store';
+import routes from './routes';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import Landing from "./components/views/Landing";
 
-ReactDOM.render(<Landing />, document.getElementById('root'));
+import './index.css';
+
+ReactDOM.render(
+    <Provider store={store}>
+        <ConnectedRouter history={history}>
+            {routes}
+        </ConnectedRouter>
+    </Provider>, document.getElementById('root')
+);
+
 registerServiceWorker();
