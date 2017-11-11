@@ -7,7 +7,6 @@ class SearchResult extends Component {
         const searchResult = this.props;
         return (
             <div>
-                Search Results:
                 {
                     searchResult.searchResults.map((item, index) => {
                         return <SearchResultItem item={item} key={index}/>;
