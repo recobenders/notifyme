@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NotifyMe from '../../buttons/NotifyMe';
 
 class NotifyContainer extends Component {
 
@@ -6,6 +7,7 @@ class NotifyContainer extends Component {
         return (
             <div>
                 Some notification options
+                <NotifyMe />
             </div>
         );
     }
