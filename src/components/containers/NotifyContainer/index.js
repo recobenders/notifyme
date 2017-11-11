@@ -6,8 +6,11 @@ class NotifyContainer extends Component {
     render() {
         return (
             <div>
-                Some notification options
-                <NotifyMe />
+                {this.props.releaseDates.map(releaseDate =>
+                    <div>
+                        <NotifyMe item={this.props.item} date={releaseDate} />
+                    </div>
+                )}
             </div>
         );
     }
