@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import SearchBox from "../../SearchBox";
+import SearchResult from "../../SearchResult";
 
 class SearchContainer extends Component {
 
     render() {
         return (
-            <SearchBox />
+            <div>
+                <SearchBox />
+                <SearchResult/>
+            </div>
         );
     }
 }
