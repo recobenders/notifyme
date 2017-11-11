@@ -18,7 +18,6 @@ class Item extends Component {
 SELECT DISTINCT ?date WHERE {
   ?item ?label "${this.state.item.name}"@en .
   ?item wdt:P577 ?date .
-  FILTER(now() <= ?date) .
 } ORDER BY ASC(?date)
 LIMIT 10
 `;
