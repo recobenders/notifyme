@@ -69,10 +69,10 @@ class SearchBox extends Component {
         const { classes } = this.props;
 
         return (
-            <Grid container className={classes.root} >
-                <Grid item xs={12}>
-                    <Grid container justify="center" spacing={8}>
-                        <Grid item xs={8} style={{flexGrow: 0}}>
+            <Grid container justify="center" className={classes.root}>
+                <Grid item xs={7}>
+                    <Grid container spacing={8}>
+                        <Grid item xs={10}>
                             <TextField
                                 type="search"
                                 placeholder="Search for movie, TV show, video game or music album you are interested in"
@@ -81,10 +81,10 @@ class SearchBox extends Component {
                                 onChange={this.searchKnowledgeApi}
                             />
                         </Grid>
-                        <Grid item xs={2} style={{flexGrow: 0}}>
+                        <Grid item xs={2}>
                             <Button raised className={classes.button} onClick={this.props.handleResultSubmit}>
                                 <Search className={classes.leftIcon} />
-                                Show me more
+                                {this.props.buttonText}
                             </Button>
                         </Grid>
                     </Grid>

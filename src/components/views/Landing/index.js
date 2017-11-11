@@ -9,8 +9,8 @@ const styles = theme => ({
         flexGrow: 1,
         marginTop: 30,
     },
-    lastHeader: {
-        marginBottom: 40
+    headers: {
+        marginBottom: 35
     }
 });
 
@@ -35,13 +35,20 @@ class Landing extends Component {
             <div className={classes.root}>
                 <Grid container spacing={40}>
                     <Grid item xs={12}>
-                        <Typography align={'center'} type={'display4'}>NotifyME</Typography>
+                        <Typography
+                            align={'center'}
+                            type={'display4'}
+                            className={classes.headers} >
+                            NotifyME
+                        </Typography>
                     </Grid>
-                    <Grid item xs={12} className={classes.lastHeader}>
+                    <Grid item xs={12} className={classes.headers}>
                         <Typography align={'center'} type={'headline'}>Something clever and fantastic</Typography>
                     </Grid>
                     <Grid item xs={12}>
-                        <SearchContainer handleSearchSubmit={this.handleSearchSubmit} />
+                        <SearchContainer
+                            handleSearchSubmit={this.handleSearchSubmit}
+                            buttonText={'More'}/>
                     </Grid>
                 </Grid>
             </div>
