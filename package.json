@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.17.0",
     "history": "^4.7.2",
+    "jimp": "0.2.27",
     "knowledge-node": "^1.0.0",
     "material-ui": "^1.0.0-beta.20",
     "material-ui-icons": "^1.0.0-beta.17",
@@ -22,6 +23,7 @@
     "redux-logger": "^3.0.6",
     "redux-router": "^2.1.2",
     "redux-thunk": "^2.2.0",
+    "smartcrop": "^1.1.1",
     "typeface-roboto": "^0.0.43",
     "wikidata-sdk": "^5.3.1"
   },
