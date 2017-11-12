@@ -14,7 +14,7 @@ class NotifyMe extends Component {
             '+01:00'
         );
         const event = {
-          title: this.props.item.name.replace(/&amp;/g, '&'),
+          title: this.props.item,
           description: this.props.item.description,
           location: '',
           startTime: dateString,
