@@ -28,19 +28,15 @@ class Instructions extends Component {
                 <Grid container spacing={40} justify="center">
                     <Grid item xs={7}>
                         <Video autoPlay loop muted
-                               controls={['PlayPause', 'Seek', 'Time']}
-                               onCanPlayThrough={() => {
-                                   // Do stuff
-                               }}>
-                            <source src="search.mp4" type="video/webm" />
-                            <track label="English" kind="subtitles" srcLang="en" src="http://source.vtt" default />
+                               controls={['PlayPause', 'Seek', 'Time']} >
+                            <source src="/search.mp4" type="video/mp4" />
                         </Video>
                     </Grid>
                     <Grid item xs={7}>
                         <Card className={classes.card}>
                             <CardContent>
                                 <Typography type="headline" component="h2">
-                                    How to use Notify ME
+                                    How to use Notify Me
                                 </Typography>
                                 <Typography component="p">
                                     1. Search for an upcoming movie, TV show, video game or music album by typing in the search box.

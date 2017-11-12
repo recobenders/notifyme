@@ -40,7 +40,7 @@ class Technologies extends Component {
                                     Search Autocomplete
                                 </Typography>
                                 <Typography component="p">
-                                    Notify ME uses Google Knowledge Graph to allow you to search for an upcoming movie, TV show, video game or music album.
+                                    Notify Me uses Google Knowledge Graph to allow you to search for an upcoming movie, TV show, video game or music album.
                                     Currently only aforementioned item types are supported.
                                 </Typography>
 
@@ -50,9 +50,9 @@ class Technologies extends Component {
                                     Fetching Release Dates
                                 </Typography>
                                 <Typography component="p">
-                                    In order to get publication dates for a selected item, Notify ME fires a request to Wikidata.
+                                    In order to get publication dates for a selected item, Notify Me fires a request to Wikidata.
                                     For a single item there may be multiple publication dates as there may be various release dates in various countries.
-                                    If any of the fetched release dates is yet to come, Notify ME is going to allow you to add an event to your personal calendar.
+                                    If any of the fetched release dates is yet to come, Notify Me is going to allow you to add an event to your personal calendar.
                                 </Typography>
                             </CardContent>
                         </Card>
