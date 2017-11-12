@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.17.0",
+    "font-awesome": "^4.7.0",
     "history": "^4.7.2",
     "jimp": "0.2.27",
     "knowledge-node": "^1.0.0",

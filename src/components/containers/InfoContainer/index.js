@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import ItemProperty from '../../ItemProperty';
-import NotifyMe from '../../buttons/NotifyMe';
 import NotifyContainer from '../NotifyContainer';
 import Grid from 'material-ui/Grid';
 import Card, { CardHeader, CardContent, CardMedia } from 'material-ui/Card';
-import Typography from 'material-ui/Typography';
 import Divider from 'material-ui/Divider';
 import { withStyles } from 'material-ui/styles';
 
