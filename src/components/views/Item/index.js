@@ -17,16 +17,28 @@ class Item extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            item: props.location.state.item,
+            item: null,
             releaseDates: []
         };
     }
 
-    // DRY
+    componentWillReceiveProps(nextProps){
+        this.handleItemChange(nextProps.location.state.item)
+    }
+
     componentDidMount() {
+        this.handleItemChange(this.props.location.state.item);
+    }
+
+    handleItemChange = (item) => {
+        this.setState({item: item});
+        this.sparqlSearch(item);
+    };
+
+    sparqlSearch = (item) => {
         const sparql = `
 SELECT DISTINCT ?date WHERE {
-  ?item ?label "${this.state.item.name}"@en .
+  ?item ?label "${item.name}"@en .
   ?item wdt:P577 ?date .
 } ORDER BY ASC(?date)
 LIMIT 10
@@ -38,7 +50,7 @@ LIMIT 10
                 const releaseDates = res.data.results.bindings.map(item => new Date(item.date.value));
                 this.setState({ releaseDates: releaseDates });
             });
-    }
+    };
 
     handleSearchSubmit = (items) => {
         if(items.length === 0) { return; }
@@ -51,7 +63,7 @@ LIMIT 10
 
     render() {
         const item = this.state.item;
-        if(item == null) return null;
+        if(item === null) return null;
 
         const { classes } = this.props;
 
