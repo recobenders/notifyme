@@ -12,10 +12,20 @@ import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
 class App extends Component {
+    handleTutorialOnClick = () => {
+        history.push({
+                pathname: "/how-it-works",
+            }
+        );
+    };
+
     render() {
         return (
             <div>
-                <TopBar/>
+                <div onClick={this.handleTutorialOnClick} className="corner-ribbon top-right sticky blue shadow">
+                    <a>Tutorial</a>
+                </div>
+                <TopBar history={history}/>
                 <Provider store={store}>
                     <ConnectedRouter history={history}>
                         {routes}
