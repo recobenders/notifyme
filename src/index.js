@@ -29,4 +29,5 @@ class App extends Component {
 ReactDOM.render(<App/>, document.getElementById('root')
 );
 
+window.HACKBIT_VOTING_WIDGET.render(null);
 registerServiceWorker();
