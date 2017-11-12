@@ -45,7 +45,7 @@ class ItemList extends Component {
 
         return (
             <div className={classes.root}>
-                <Grid container justify="center" spacing={40}>
+                <Grid container justify="center">
                     <Grid item xs={12}>
                         <SearchContainer
                             handleSearchSubmit={this.handleSearchSubmit}
