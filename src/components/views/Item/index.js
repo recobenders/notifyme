@@ -4,6 +4,14 @@ import wdk from 'wikidata-sdk';
 import InfoContainer from "../../containers/InfoContainer";
 import NotifyContainer from "../../containers/NotifyContainer";
 import Grid from 'material-ui/Grid';
+import Typography from 'material-ui/Typography';
+import { withStyles } from 'material-ui/styles';
+
+const styles = theme => ({
+    itemName: {
+        marginTop: 35
+    }
+});
 
 class Item extends Component {
     constructor(props) {
@@ -34,12 +42,25 @@ LIMIT 10
     render() {
         const item = this.state.item;
         if(item == null) return null;
+
+        const { classes } = this.props;
+
         return (
             <div>
-                <Grid container spacing={24}>
-                    <Grid item xs={12}>
-                        <h2>Item view #{item.name.replace(/&amp;/g, '&')}</h2>
+                <Grid container justify="center" spacing={24}>
+                    <Grid item xs={7} className={classes.itemName}>
+                        <Typography
+                            align={'center'}
+                            type={'display1'} >
+                            {item.name}
+                        </Typography>
+                    </Grid>
+
+                    <Grid item xs={7}>
                         <InfoContainer item={item}/>
+                    </Grid>
+
+                    <Grid item xs={7}>
                         <NotifyContainer item={item} releaseDates={this.state.releaseDates}/>
                     </Grid>
                 </Grid>
@@ -48,4 +69,4 @@ LIMIT 10
     }
 }
 
-export default Item;
+export default withStyles(styles)(Item);
