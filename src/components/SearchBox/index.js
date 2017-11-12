@@ -29,7 +29,7 @@ class SearchBox extends Component {
 
     searchKnowledgeApi = (event) => {
         clearTimeout(this.timeout);
-
+        this.props.handleShowResults(true);
         let searchTerm = event.target.value;
         this.timeout = setTimeout(() => {
             if(searchTerm !== ''){
@@ -37,7 +37,7 @@ class SearchBox extends Component {
             } else {
                 this.props.handleResultUpdate(null);
             }
-        }, 200);
+        }, 50);
     };
 
     knowledgeSearch = (input) => {
@@ -68,11 +68,12 @@ class SearchBox extends Component {
 
     handleFormSubmit = (event) => {
         event.preventDefault();
+        this.props.handleShowResults(false);
         this.props.handleResultSubmit();
     };
 
     waitToHideResults = () => {
-        setTimeout(() => this.props.handleShowResults(false), 100)
+        setTimeout(() => this.props.handleShowResults(false), 200)
     };
 
     render() {
