@@ -7,7 +7,6 @@ import deepPurple from 'material-ui/colors/deepPurple'
 
 const styles = theme => ({
     root: {
-        marginTop: theme.spacing.unit,
         width: '100%',
     },
     flex: {
