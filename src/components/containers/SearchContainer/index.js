@@ -10,6 +10,12 @@ const styles = theme => ({
         flexGrow: 1,
         marginTop: 30,
     },
+    search: {
+        position: 'absolute',
+        width: '100%',
+        zIndex: 50,
+        top: 0
+    }
 });
 
 class SearchContainer extends Component {
@@ -18,6 +24,7 @@ class SearchContainer extends Component {
         this.state = {
             searchResults: [],
             showResults: false,
+            height: 0
         };
     }
 
@@ -42,12 +49,13 @@ class SearchContainer extends Component {
 
     handleShowResults = (value) => {
         if(!this._mounted) { return; }
-        this.setState({showResults: value})
+        const itemSearchElement = document.getElementById('item-search');
+        const top = itemSearchElement.getBoundingClientRect().top + itemSearchElement.clientHeight;
+        this.setState({showResults: value, height: top})
     };
 
     render() {
         const { classes } = this.props;
-
         return (
             <div className={classes.root}>
                 <Grid container justify="center">
@@ -59,9 +67,9 @@ class SearchContainer extends Component {
                             buttonText={this.props.buttonText}
                         />
                     </Grid>
-                    <Grid item xs={8}>
+                    <Grid item xs={8} className={classes.search} style={{top: this.state.height}}>
                         { this.state.showResults &&
-                            <SearchResult searchResults={this.state.searchResults}/>
+                            <SearchResult searchResults={this.state.searchResults} />
                         }
                     </Grid>
                 </Grid>
