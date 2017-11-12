@@ -10,7 +10,7 @@ class ItemProperty extends Component {
 
         return (
             <div>
-                <Grid container spacing={16}>
+                <Grid container spacing={16} alignItems="center">
                     <Grid item xs={3}>
                         <Typography
                             align={'left'}

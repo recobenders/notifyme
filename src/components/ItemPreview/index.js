@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import wdk from 'wikidata-sdk';
 import InfoContainer from '../containers/InfoContainer';
-import NotifyContainer from "../containers/NotifyContainer";
 import Grid from 'material-ui/Grid';
 
 class ItemPreview extends Component {
@@ -26,7 +25,21 @@ LIMIT 10
 
         axios.get(url)
             .then(res => {
-                const releaseDates = res.data.results.bindings.map(item => new Date(item.date.value));
+                const items = res.data.results.bindings;
+                let releaseDates = {};
+                for (let item of items) {
+                    const date = new Date(item.date.value);
+                    const location = item.placeOfPublicationLabel ? item.placeOfPublicationLabel.value : null;
+                    if(date in releaseDates && location) {
+                        releaseDates[date].locations.push(location);
+                    } else {
+                        releaseDates[date] = {
+                            date: date,
+                            locations: location ? [location] : []
+                        };
+                    }
+                }
+
                 this.setState({ releaseDates: releaseDates });
             });
     }
@@ -36,10 +49,7 @@ LIMIT 10
         return (
             <Grid container justify="center" spacing={40}>
                 <Grid item xs={12}>
-                    <InfoContainer item={item} />
-                </Grid>
-                <Grid item xs={12}>
-                    <NotifyContainer item={item} releaseDates={this.state.releaseDates}/>
+                    <InfoContainer item={item} releaseDates={this.state.releaseDates}/>
                 </Grid>
             </Grid>
         );

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-// import SmartCrop from 'smartcrop';
 import { Link } from 'react-router-dom'
-import Jimp from 'jimp';
 import ItemProperty from '../../ItemProperty';
+import NotifyMe from '../../buttons/NotifyMe';
+import NotifyContainer from '../NotifyContainer';
 import Grid from 'material-ui/Grid';
-import { CircularProgress } from 'material-ui/Progress';
 import Card, { CardHeader, CardContent, CardMedia } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
+import Divider from 'material-ui/Divider';
 import { withStyles } from 'material-ui/styles';
 
 const styles = theme => ({
@@ -19,66 +19,20 @@ const styles = theme => ({
     media: {
         height: 200,
     },
+    divider: {
+        marginTop: 30,
+        marginBottom: 30,
+    }
 });
 
 class InfoContainer extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            imageSrc: null
-        }
-    }
-
-    componentDidMount() {
-        if(this.props.item.image && this.props.item.image.contentUrl) {
-            let context = this;
-
-            context.setState({
-                imageSrc: this.props.item.image.contentUrl
-            });
-
-            Jimp.read(this.props.item.image.contentUrl).then(function (image) {
-                image.getBase64(Jimp.AUTO, function (err, buffer) {
-                    let img = new Image(image.width, image.height);
-                    img.src = buffer.toString('base64');
-
-                    // SmartCrop.crop(img, {width: 300, height: 300}).then(function(result){
-                        // var crop = result.topCrop;
-                        // let croppedImage = image.extract({width: crop.width, height: crop.height, left: crop.x, top: crop.y}).resize(300, 300);
-                        //
-                        // croppedImage.getBase64(Jimp.AUTO, function (err, buffer) {
-                        //     context.setState({
-                        //         imageSrc: buffer.toString('base64')
-                        //     });
-                        // });
-                        // console.log(result);
-                    // });
-
-                    return buffer.toString('base64');
-                });
-            }).catch(function (err) {
-                console.error(err);
-            });
-        }
-    }
 
     render() {
+        const { classes } = this.props;
         const item = this.props.item;
         const description = item.description  || 'N/A';
         const detailedDescription = (item.detailedDescription === undefined ||
             item.detailedDescription.articleBody === undefined ) ? 'N/A' : item.detailedDescription.articleBody;
-
-        const { classes } = this.props;
-        let image = null;
-        if (this.state.imageSrc) {
-            image = <img
-                src={this.state.imageSrc}
-                alt={item.name}
-            />;
-        } else {
-            image = <CircularProgress className={classes.progress} size={50} />;
-        }
 
         let link = null;
         if (item.url) {
@@ -88,10 +42,10 @@ class InfoContainer extends Component {
         }
 
         let cardMedia = null;
-        if (this.state.imageSrc) {
+        if(this.props.item.image && this.props.item.image.contentUrl) {
             cardMedia = <CardMedia
                 className={classes.media}
-                image={this.state.imageSrc}
+                image={this.props.item.image.contentUrl}
                 title={item.name}
             />;
         }
@@ -109,6 +63,10 @@ class InfoContainer extends Component {
                             <ItemProperty label="Type:" value={item['@type'].join(',') || 'N/A'}/>
                             <ItemProperty label="Description:" value={detailedDescription}/>
                             <ItemProperty label="Link:" value={link}/>
+
+                            <Divider className={classes.divider} />
+
+                            <NotifyContainer item={item} releaseDates={this.props.releaseDates}/>
                         </CardContent>
                     </Card>
                 </Grid>
