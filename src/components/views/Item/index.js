@@ -37,7 +37,7 @@ class Item extends Component {
     };
 
     sparqlSearch = (item) => {
-        const sparql = sparqlHelper.retreiveSparqlQuery(item);
+        const sparql = sparqlHelper.retrieveSparqlQuery(item);
         const url = wdk.sparqlQuery(sparql);
 
         axios.get(url)
@@ -47,12 +47,14 @@ class Item extends Component {
                 for (let item of items) {
                     const date = new Date(item.date.value);
                     const location = item.placeOfPublicationLabel ? item.placeOfPublicationLabel.value : null;
-                    if(date in releaseDates && location) {
-                        releaseDates[date].locations.push(location);
+                    if(date in releaseDates) {
+                        if(location !== null) {
+                            releaseDates[date].locations.push(location);
+                        }
                     } else {
                         releaseDates[date] = {
                             date: date,
-                            locations: location ? [location] : []
+                            locations: location === null ? [] : [location]
                         };
                     }
                 }

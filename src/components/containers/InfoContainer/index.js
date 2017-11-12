@@ -26,6 +26,7 @@ const styles = theme => ({
 class InfoContainer extends Component {
 
     render() {
+        // console.log(this.props);
         const { classes } = this.props;
         const item = this.props.item;
         const description = item.description  || 'N/A';

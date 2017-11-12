@@ -3,7 +3,7 @@ export default class SparqlHelperClass {
         return item['@type'].find(function (el) { return el !== 'Thing' });
     }
 
-    retreiveSparqlInstance(item) {
+    retrieveSparqlInstance(item) {
         let itemType = this.getItemType(item);
         if(itemType === 'Movie'){
             return 'Q11424'
@@ -17,8 +17,8 @@ export default class SparqlHelperClass {
         return null;
     }
 
-    retreiveSparqlQuery(item){
-        let instance = this.retreiveSparqlInstance(item);
+    retrieveSparqlQuery(item){
+        let instance = this.retrieveSparqlInstance(item);
         return (
             `
             SELECT DISTINCT ?date ?imdbId ?placeOfPublicationLabel WHERE {
