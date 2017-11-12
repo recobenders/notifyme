@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
-import SmartCrop from 'smartcrop';
+// import SmartCrop from 'smartcrop';
+import { Link } from 'react-router-dom'
 import Jimp from 'jimp';
 import ItemProperty from '../../ItemProperty';
 import Grid from 'material-ui/Grid';
 import { CircularProgress } from 'material-ui/Progress';
-import { Link } from 'react-router-dom'
+import Card, { CardHeader, CardContent, CardMedia } from 'material-ui/Card';
+import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 
 const styles = theme => ({
     progress: {
         margin: `0 ${theme.spacing.unit * 2}px`,
+    },
+    card: {
+        maxWidth: `100%`,
+    },
+    media: {
+        height: 200,
     },
 });
 
@@ -79,17 +87,30 @@ class InfoContainer extends Component {
             link = 'N/A';
         }
 
+        let cardMedia = null;
+        if (this.state.imageSrc) {
+            cardMedia = <CardMedia
+                className={classes.media}
+                image={this.state.imageSrc}
+                title={item.name}
+            />;
+        }
+
         return (
             <Grid container spacing={24}>
-                <Grid item xs={6}>
-                    {image}
-                </Grid>
-                <Grid item xs={6}>
-                    <ItemProperty label="Name:" value={item.name}/>
-                    <ItemProperty label="Type:" value={item['@type'].join(',') || 'N/A'}/>
-                    <ItemProperty label="Description:" value={description}/>
-                    <ItemProperty label="Detailed Description:" value={detailedDescription}/>
-                    <ItemProperty label="Link:" value={link}/>
+                <Grid item xs={12}>
+                    <Card className={classes.card}>
+                        <CardHeader
+                            title={item.name}
+                            subheader={description}
+                        />
+                        {cardMedia}
+                        <CardContent>
+                            <ItemProperty label="Type:" value={item['@type'].join(',') || 'N/A'}/>
+                            <ItemProperty label="Description:" value={detailedDescription}/>
+                            <ItemProperty label="Link:" value={link}/>
+                        </CardContent>
+                    </Card>
                 </Grid>
             </Grid>
         );

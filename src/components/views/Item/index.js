@@ -8,7 +8,7 @@ import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 
 const styles = theme => ({
-    itemName: {
+    itemContainer: {
         marginTop: 35
     }
 });
@@ -49,15 +49,7 @@ LIMIT 10
         return (
             <div>
                 <Grid container justify="center" spacing={40}>
-                    <Grid item xs={7} className={classes.itemName}>
-                        <Typography
-                            align={'center'}
-                            type={'display1'} >
-                            {item.name}
-                        </Typography>
-                    </Grid>
-
-                    <Grid item xs={7}>
+                    <Grid item xs={7} className={classes.itemContainer}>
                         <InfoContainer item={item}/>
                     </Grid>
 
