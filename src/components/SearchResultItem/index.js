@@ -6,8 +6,8 @@ import Typography from 'material-ui/Typography';
 import grey from 'material-ui/colors/grey';
 import MovieIcon from 'material-ui-icons/Movie';
 import MusicIcon from 'material-ui-icons/LibraryMusic';
-import TVShowIcon from 'material-ui-icons/VideoLabel';
-import GameIcon from 'material-ui-icons/Games';
+import TVIcon from 'material-ui-icons/Tv';
+import GameIcon from 'material-ui-icons/VideogameAsset';
 import Avatar from 'material-ui/Avatar';
 
 const styles = theme => ({
@@ -59,7 +59,7 @@ class SearchResultItem extends Component {
         if(mediaType === 'Movie'){
             return <MovieIcon className={classes.svgIcon}/>
         } else if(mediaType === 'TVSeries' || mediaType === 'TVEpisode'){
-            return <TVShowIcon className={classes.svgIcon}/>
+            return <TVIcon className={classes.svgIcon}/>
         } else if(mediaType === 'MusicAlbum'){
             return <MusicIcon className={classes.svgIcon}/>
         } else if(mediaType === 'VideoGame'){
@@ -77,6 +77,7 @@ class SearchResultItem extends Component {
 
     render() {
         const { classes, item } = this.props;
+        if(item === undefined) return;
         console.log(item);
         return (
             <Card className={classes.card} onClick={this.handleOnClick}>
@@ -93,7 +94,7 @@ class SearchResultItem extends Component {
                 <div>
                     <CardContent className={classes.content}>
                         <div className={classes.details}>
-                            <Typography type="title">{item.name.replace(/&amp;/g, '&')}</Typography>
+                            <Typography type="title">{item.name}</Typography>
                             <Typography type="subheading" color="secondary">
                                 {item.description}
                             </Typography>

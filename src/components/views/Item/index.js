@@ -38,7 +38,7 @@ LIMIT 10
             <div>
                 <Grid container spacing={24}>
                     <Grid item xs={12}>
-                        <h2>Item view #{item.name.replace(/&amp;/g, '&')}</h2>
+                        <h2>Item view #{item.name}</h2>
                         <InfoContainer item={item}/>
                         <NotifyContainer item={item} releaseDates={this.state.releaseDates}/>
                     </Grid>
