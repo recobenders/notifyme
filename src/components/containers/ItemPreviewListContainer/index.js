@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ItemPreview from "../../ItemPreview/index";
 import Grid from 'material-ui/Grid';
-import List, { ListItem } from 'material-ui/List';
-import Divider from 'material-ui/Divider';
+import { ListItem } from 'material-ui/List';
 
 class ItemPreviewListContainer extends Component {
     render() {

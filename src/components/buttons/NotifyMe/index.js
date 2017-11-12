@@ -3,9 +3,12 @@
 import React, { Component } from 'react';
 import moment from "moment";
 import Button from 'material-ui/Button';
-import Send from 'material-ui-icons/Send';
 import List, { ListItem } from 'material-ui/List';
+import Collapse from 'material-ui/transitions/Collapse';
+import ExpandLess from 'material-ui-icons/ExpandLess';
+import ExpandMore from 'material-ui-icons/ExpandMore';
 import { withStyles } from 'material-ui/styles';
+import './style.css'
 
 import helpersClass from "../../../helpers/add_to_calendar_helper";
 const helpers = new helpersClass();
@@ -16,7 +19,7 @@ const styles = theme => ({
     },
     leftIcon: {
         marginRight: theme.spacing.unit,
-    },
+    }
 });
 
 class NotifyMe extends Component {
@@ -104,9 +107,9 @@ class NotifyMe extends Component {
             }
 
             return (
-                <ListItem button key={i}>
+                <ListItem button key={i} divider={true}>
                     <a
-                        className={currentItem + "-link"}
+                        className={currentItem + "-link addToCalendarLink"}
                         onClick={self.handleDropdownLinkClick}
                         href={helpers.buildUrl(
                             self.state.event,
@@ -123,7 +126,9 @@ class NotifyMe extends Component {
         return (
             <div>
                 <List>
-                    {items}
+                    <Collapse in={this.state.optionsOpen} transitionDuration="auto" unmountOnExit>
+                        {items}
+                    </Collapse>
                 </List>
             </div>
         );
@@ -140,8 +145,8 @@ class NotifyMe extends Component {
         return (
             <div>
                 <Button raised className={classes.button} onClick={this.toggleCalendarDropdown}>
-                    <Send className={classes.leftIcon} />
                     Notify Me
+                    {this.state.optionsOpen ? <ExpandLess /> : <ExpandMore />}
                 </Button>
                 {dropdown}
             </div>
