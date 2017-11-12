@@ -28,7 +28,7 @@ class ItemPreview extends Component {
 
     // BEWARE same function as in View > Item > index
     sparqlSearch = (item) => {
-        let sparql = sparqlHelper.retreiveSparqlQuery(item);
+        let sparql = sparqlHelper.retrieveSparqlQuery(item);
         const url = wdk.sparqlQuery(sparql);
 
         axios.get(url)
