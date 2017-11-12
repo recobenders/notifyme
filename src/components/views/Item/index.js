@@ -17,16 +17,28 @@ class Item extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            item: props.location.state.item,
+            item: null,
             releaseDates: {}
         };
     }
 
-    // DRY
+    componentWillReceiveProps(nextProps){
+        this.handleItemChange(nextProps.location.state.item)
+    }
+
     componentDidMount() {
+        this.handleItemChange(this.props.location.state.item);
+    }
+
+    handleItemChange = (item) => {
+        this.setState({item: item});
+        this.sparqlSearch(item);
+    };
+
+    sparqlSearch = (item) => {
         const sparql = `
 SELECT DISTINCT ?date ?imdbId ?placeOfPublicationLabel WHERE {
-  ?item ?label "${this.state.item.name}"@en .
+  ?item ?label "${item.name}"@en .
   ?item wdt:P577 ?date .
   OPTIONAL { ?item wdt:P345 ?imdbId. }
   ?statement ps:P577 ?date.
@@ -55,7 +67,7 @@ SELECT DISTINCT ?date ?imdbId ?placeOfPublicationLabel WHERE {
 
                 this.setState({ releaseDates: releaseDates });
             });
-    }
+    };
 
     handleSearchSubmit = (items) => {
         if(items.length === 0) { return; }
@@ -68,7 +80,7 @@ SELECT DISTINCT ?date ?imdbId ?placeOfPublicationLabel WHERE {
 
     render() {
         const item = this.state.item;
-        if(item == null) return null;
+        if(item === null) return null;
 
         const { classes } = this.props;
 
