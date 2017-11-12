@@ -31,8 +31,7 @@ function TopBar(props) {
                     <Typography type="title" color="inherit" className={classes.title}>
                         Notify Me
                     </Typography>
-                    <div id="hackbit-vote-widget" className={classes.flex}>
-                    </div>
+                    <div id='hackbit-vote-widget' className={classes.flex}/>
                 </Toolbar>
             </AppBar>
         </div>
