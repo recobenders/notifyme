@@ -96,7 +96,7 @@ class InfoContainer extends Component {
                         />
                         {cardMedia}
                         <CardContent>
-                            <ItemProperty label="Type:" value={item['@type'].join(',') || 'N/A'}/>
+                            <ItemProperty label="Type:" value={item['@type'].join(', ') || 'N/A'}/>
                             <ItemProperty label="Description:" value={detailedDescription}/>
                             <ItemProperty label="Link:" value={link}/>
 
