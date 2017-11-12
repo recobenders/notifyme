@@ -9,6 +9,8 @@ import ExpandLess from 'material-ui-icons/ExpandLess';
 import ExpandMore from 'material-ui-icons/ExpandMore';
 import { withStyles } from 'material-ui/styles';
 import './style.css'
+import { MuiThemeProvider} from 'material-ui/styles';
+import { orangeTheme } from '../../../helpers/button_theme_override'
 
 import helpersClass from "../../../helpers/add_to_calendar_helper";
 const helpers = new helpersClass();
@@ -117,8 +119,8 @@ class NotifyMe extends Component {
                               currentItem
                           )}
                 >
-                        {icon}
-                        {currentLabel}
+                    {icon}
+                    {currentLabel}
                 </ListItem>
             );
         });
@@ -144,10 +146,12 @@ class NotifyMe extends Component {
 
         return (
             <div>
-                <Button raised className={classes.button} onClick={this.toggleCalendarDropdown}>
-                    Notify Me
-                    {this.state.optionsOpen ? <ExpandLess /> : <ExpandMore />}
-                </Button>
+                <MuiThemeProvider theme={orangeTheme}>
+                    <Button className={classes.button} onClick={this.toggleCalendarDropdown}>
+                        Notify Me
+                        {this.state.optionsOpen ? <ExpandLess /> : <ExpandMore />}
+                    </Button>
+                </MuiThemeProvider>
                 {dropdown}
             </div>
         );
