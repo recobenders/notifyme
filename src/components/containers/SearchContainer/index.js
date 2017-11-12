@@ -15,7 +15,10 @@ const styles = theme => ({
 class SearchContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = { searchResults: [] };
+        this.state = {
+            searchResults: [],
+            showResults: false,
+        };
     }
 
     handleResultUpdate = (results) => {
@@ -32,6 +35,10 @@ class SearchContainer extends Component {
         }
     };
 
+    handleShowResults = (value) => {
+        this.setState({showResults: value})
+    };
+
     render() {
         const { classes } = this.props;
 
@@ -42,11 +49,12 @@ class SearchContainer extends Component {
                         <SearchBox
                             handleResultUpdate={this.handleResultUpdate}
                             handleResultSubmit={this.handleResultSubmit}
+                            handleShowResults={this.handleShowResults}
                             buttonText={this.props.buttonText}
                         />
                     </Grid>
-                    <Grid item xs={7}>
-                        {
+                    <Grid item xs={8}>
+                        { this.state.showResults &&
                             <SearchResult searchResults={this.state.searchResults}/>
                         }
                     </Grid>
