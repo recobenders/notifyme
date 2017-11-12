@@ -17,11 +17,7 @@ const styles = theme => ({
 class Landing extends Component {
 
     handleSearchSubmit = (items) => {
-        if(items.length === 0) {
-            return;
-            // We have to do something
-        }
-
+        if(items.length === 0) { return; }
         this.props.history.push({
                 pathname: "/item-list",
                 state: {items: items}

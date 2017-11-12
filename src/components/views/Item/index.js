@@ -4,6 +4,7 @@ import wdk from 'wikidata-sdk';
 import InfoContainer from "../../containers/InfoContainer";
 import NotifyContainer from "../../containers/NotifyContainer";
 import Grid from 'material-ui/Grid';
+import SearchContainer from "../../containers/SearchContainer"
 import { withStyles } from 'material-ui/styles';
 
 const styles = theme => ({
@@ -56,6 +57,15 @@ SELECT DISTINCT ?date ?imdbId ?placeOfPublicationLabel WHERE {
             });
     }
 
+    handleSearchSubmit = (items) => {
+        if(items.length === 0) { return; }
+        this.props.history.push({
+                pathname: "/item-list",
+                state: {items: items}
+            }
+        );
+    };
+
     render() {
         const item = this.state.item;
         if(item == null) return null;
@@ -65,6 +75,14 @@ SELECT DISTINCT ?date ?imdbId ?placeOfPublicationLabel WHERE {
         return (
             <div>
                 <Grid container justify="center" spacing={40}>
+                    <Grid item xs={12} className={classes.itemContainer}>
+                        <SearchContainer
+                            handleSearchSubmit={this.handleSearchSubmit}
+                            buttonText={'More'}
+                            hideResultsAfterSubmit={false}
+                        />
+                    </Grid>
+
                     <Grid item xs={7} className={classes.itemContainer}>
                         <InfoContainer item={item}/>
                     </Grid>

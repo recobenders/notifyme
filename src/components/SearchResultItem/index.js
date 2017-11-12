@@ -79,13 +79,21 @@ class SearchResultItem extends Component {
         );
     };
 
+    processImageURL(){
+        if(this.props.item.image && this.props.item.image.contentUrl) {
+            return(this.props.item.image.contentUrl)
+        }
+        return 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'
+    }
+
     render() {
         const { classes, item } = this.props;
+        const imageUrl = this.processImageURL();
         return (
             <Card className={classes.card} onClick={this.handleOnClick}>
                 <CardMedia
                     className={classes.cover}
-                    image="https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Mac_Miller_Live_from_Space.jpg/220px-Mac_Miller_Live_from_Space.jpg"
+                    image={imageUrl}
                     title="Live from space album cover"
                 />
                 <div className={classes.avatarDiv}>
