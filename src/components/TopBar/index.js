@@ -42,7 +42,7 @@ class TopBar extends Component {
                     <Toolbar>
                         <Typography type="title" color="inherit" className={classes.title}
                                     onClick={this.handleTitleOnClick}>
-                            Notify Me
+                            NotifyME
                         </Typography>
                         <div id='hackbit-vote-widget' className={classes.flex}/>
                     </Toolbar>
