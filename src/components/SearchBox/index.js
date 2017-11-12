@@ -90,7 +90,7 @@ class SearchBox extends Component {
                                 <MuiThemeProvider theme={blueTheme}>
                                     <TextField
                                         type="search"
-                                        placeholder="Search for movie, TV show, video game or music album you are interested in."
+                                        placeholder="Search for a movie, TV show, video game or music album you are interested in."
                                         autoComplete="off"
                                         margin="normal"
                                         fullWidth
