@@ -35,7 +35,6 @@ class ItemList extends Component {
                         <SearchContainer
                             handleSearchSubmit={this.handleSearchSubmit}
                             buttonText={'Search'}
-                            hideResultsAfterSubmit
                         />
                     </Grid>
                     <Grid item xs={7}>
