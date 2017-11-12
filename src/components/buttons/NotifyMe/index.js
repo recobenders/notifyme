@@ -1,5 +1,7 @@
+// Significant part of this component's code is taken from: https://github.com/jasonsalzman/react-add-to-calendar/
+
 import React, { Component } from 'react';
-// import AddToCalendar from 'react-add-to-calendar';
+import moment from "moment";
 import Button from 'material-ui/Button';
 import Send from 'material-ui-icons/Send';
 import List, { ListItem } from 'material-ui/List';
@@ -22,15 +24,8 @@ class NotifyMe extends Component {
         super(props);
 
         const date = this.props.date;
-        const dateString = (
-            date.getFullYear() +
-            '-' + ('0' + (date.getMonth() + 1)).slice(-2) +
-            '-' + ('0' + date.getDate()).slice(-2) +
-            'T' + ('0' + date.getHours()).slice(-2) +
-            ':' + ('0' + date.getMinutes()).slice(-2) +
-            ':' + ('0' + date.getSeconds()).slice(-2) +
-            '+01:00'
-        );
+        const startDateString = moment.utc(date).format();
+        const endDateString = moment.utc(date).add(1, 'hour').format();
 
         this.state = {
             optionsOpen: props.optionsOpen || false,
@@ -38,8 +33,8 @@ class NotifyMe extends Component {
                 title: this.props.item.name,
                 description: this.props.item.description,
                 location: '',
-                startTime: dateString,
-                endTime: dateString
+                startTime: startDateString,
+                endTime: endDateString
             }
         };
 
