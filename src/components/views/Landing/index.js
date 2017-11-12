@@ -4,7 +4,6 @@ import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import Divider from 'material-ui/Divider';
 import { withStyles } from 'material-ui/styles';
-import grey from 'material-ui/colors/grey';
 
 const styles = theme => ({
     root: {
@@ -44,7 +43,7 @@ class Landing extends Component {
                         <Grid container justify='center'>
                             <Grid item xs={8}>
                                 <Grid container justify='center'>
-                                    <Grid item xs={3}>
+                                    <Grid item>
                                         <img src="/logoNME.png" className={classes.logo}/>
                                     </Grid>
                                     <Grid item xs={4}>
