@@ -3,6 +3,8 @@ import axios from 'axios';
 import wdk from 'wikidata-sdk';
 import InfoContainer from '../containers/InfoContainer';
 import Grid from 'material-ui/Grid';
+import SparqlHelperClass from "../../helpers/sparql_helper";
+const sparqlHelper = new SparqlHelperClass();
 
 class ItemPreview extends Component {
     constructor(props) {
@@ -26,16 +28,7 @@ class ItemPreview extends Component {
 
     // BEWARE same function as in View > Item > index
     sparqlSearch = (item) => {
-        const sparql = `
-SELECT DISTINCT ?date ?imdbId ?placeOfPublicationLabel WHERE {
-  ?item ?label "${item.name}"@en .
-  ?item wdt:P577 ?date .
-  OPTIONAL { ?item wdt:P345 ?imdbId. }
-  ?statement ps:P577 ?date.
-  ?statement pq:P291 ?placeOfPublication.
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
-} ORDER BY ASC(?date)
-`;
+        let sparql = sparqlHelper.retreiveSparqlQuery(item);
         const url = wdk.sparqlQuery(sparql);
 
         axios.get(url)

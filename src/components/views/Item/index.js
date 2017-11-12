@@ -6,6 +6,8 @@ import NotifyContainer from "../../containers/NotifyContainer";
 import Grid from 'material-ui/Grid';
 import SearchContainer from "../../containers/SearchContainer"
 import { withStyles } from 'material-ui/styles';
+import SparqlHelperClass from "../../../helpers/sparql_helper";
+const sparqlHelper = new SparqlHelperClass();
 
 const styles = theme => ({
     itemContainer: {
@@ -36,16 +38,7 @@ class Item extends Component {
     };
 
     sparqlSearch = (item) => {
-        const sparql = `
-SELECT DISTINCT ?date ?imdbId ?placeOfPublicationLabel WHERE {
-  ?item ?label "${item.name}"@en .
-  ?item wdt:P577 ?date .
-  OPTIONAL { ?item wdt:P345 ?imdbId. }
-  ?statement ps:P577 ?date.
-  ?statement pq:P291 ?placeOfPublication.
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
-} ORDER BY ASC(?date)
-`;
+        const sparql = sparqlHelper.retreiveSparqlQuery(item);
         const url = wdk.sparqlQuery(sparql);
 
         axios.get(url)
