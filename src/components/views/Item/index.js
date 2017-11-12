@@ -22,6 +22,7 @@ class Item extends Component {
         };
     }
 
+    // DRY
     componentDidMount() {
         const sparql = `
 SELECT DISTINCT ?date WHERE {
@@ -47,7 +48,7 @@ LIMIT 10
 
         return (
             <div>
-                <Grid container justify="center" spacing={24}>
+                <Grid container justify="center" spacing={40}>
                     <Grid item xs={7} className={classes.itemName}>
                         <Typography
                             align={'center'}
