@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import wdk from 'wikidata-sdk';
 import InfoContainer from "../../containers/InfoContainer";
-import NotifyContainer from "../../containers/NotifyContainer";
 import Grid from 'material-ui/Grid';
 import SearchContainer from "../../containers/SearchContainer"
 import { withStyles } from 'material-ui/styles';
