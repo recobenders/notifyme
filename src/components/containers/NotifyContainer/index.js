@@ -37,34 +37,32 @@ class NotifyContainer extends Component {
         }
 
         return (
-            <div>
-                <Grid container spacing={16} justify="center" >
-                    {futureEventsLabel}
-                    {Object.keys(futureEvents).map((key, i) =>
-                        <Grid item xs={12} key={i}>
-                            <Grid container spacing={16}>
-                                <Grid item xs={3}>
-                                    <Typography
-                                        align={'center'}
-                                        type={'body2'} >
-                                        {futureEvents[key].date.toISOString().substring(0, 10)}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <Typography
-                                        align={'center'}
-                                        type={'caption'} >
-                                        {futureEvents[key].locations.join(', ')}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <NotifyMe item={this.props.item} date={futureEvents[key].date} />
-                                </Grid>
+            <Grid container spacing={16} justify="center" >
+                {futureEventsLabel}
+                {Object.keys(futureEvents).map((key, i) =>
+                    <Grid item xs={12} key={i}>
+                        <Grid container spacing={16} alignItems="center">
+                            <Grid item xs={4}>
+                                <Typography
+                                    align={'center'}
+                                    type={'body2'} >
+                                    {futureEvents[key].date.toISOString().substring(0, 10)}
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Typography
+                                    align={'center'}
+                                    type={'caption'} >
+                                    {futureEvents[key].locations.join(', ')}
+                                </Typography>
+                            </Grid>
+                            <Grid item xs={4} align="right">
+                                <NotifyMe item={this.props.item} date={futureEvents[key].date} />
                             </Grid>
                         </Grid>
-                    )}
-                </Grid>
-            </div>
+                    </Grid>
+                )}
+            </Grid>
         );
     }
 }
