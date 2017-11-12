@@ -35,7 +35,16 @@ class SearchContainer extends Component {
         }
     };
 
+    componentDidMount() {
+        this._mounted = true;
+    }
+
+    componentWillUnmount() {
+        this._mounted = false;
+    }
+
     handleShowResults = (value) => {
+        if(!this._mounted) { return; }
         this.setState({showResults: value})
     };
 
