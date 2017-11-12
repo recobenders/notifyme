@@ -23,6 +23,7 @@ class ItemList extends Component {
                 <SearchContainer
                     handleSearchSubmit={this.handleSearchSubmit}
                     buttonText={'Search'}
+                    hideResultsAfterSubmit
                 />
                 <ItemPreviewListContainer items={this.state.items}/>
             </div>

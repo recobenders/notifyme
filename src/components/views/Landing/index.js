@@ -48,7 +48,9 @@ class Landing extends Component {
                     <Grid item xs={12}>
                         <SearchContainer
                             handleSearchSubmit={this.handleSearchSubmit}
-                            buttonText={'More'}/>
+                            buttonText={'More'}
+                            hideResultsAfterSubmit={false}
+                        />
                     </Grid>
                 </Grid>
             </div>
