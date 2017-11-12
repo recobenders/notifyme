@@ -30,38 +30,34 @@ class InfoContainer extends Component {
         }
     }
 
-    componentDidMount() {
-        if(this.props.item.image && this.props.item.image.contentUrl) {
-            let context = this;
+    componentWillReceiveProps(nextProps){
+        this.handleItemUrl(nextProps);
+    }
 
-            context.setState({
-                imageSrc: this.props.item.image.contentUrl
+    componentDidMount() {
+        this.handleItemUrl(this.props);
+    }
+
+    handleItemUrl = (props) => {
+        if(props.item.image && props.item.image.contentUrl) {
+            let imageUrl = props.item.image.contentUrl;
+            this.setState({
+                imageSrc: imageUrl
             });
 
-            Jimp.read(this.props.item.image.contentUrl).then(function (image) {
+            Jimp.read(imageUrl).then(function (image) {
                 image.getBase64(Jimp.AUTO, function (err, buffer) {
                     let img = new Image(image.width, image.height);
                     img.src = buffer.toString('base64');
-
-                    // SmartCrop.crop(img, {width: 300, height: 300}).then(function(result){
-                        // var crop = result.topCrop;
-                        // let croppedImage = image.extract({width: crop.width, height: crop.height, left: crop.x, top: crop.y}).resize(300, 300);
-                        //
-                        // croppedImage.getBase64(Jimp.AUTO, function (err, buffer) {
-                        //     context.setState({
-                        //         imageSrc: buffer.toString('base64')
-                        //     });
-                        // });
-                        // console.log(result);
-                    // });
-
                     return buffer.toString('base64');
                 });
             }).catch(function (err) {
                 console.error(err);
             });
+        } else {
+            this.setState({imageSrc: null})
         }
-    }
+    };
 
     render() {
         const item = this.props.item;
