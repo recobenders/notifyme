@@ -40,7 +40,7 @@ class Landing extends Component {
                     </Grid>
                     <Grid item xs={12} className={classes.headers}>
                         <Typography align={'center'} type={'headline'}>
-                            Never miss a thing anymore
+                            Never miss a thing anymore.
                         </Typography>
                     </Grid>
                     <Grid item xs={12}>
