@@ -71,6 +71,10 @@ class SearchBox extends Component {
         this.props.handleResultSubmit();
     };
 
+    waitToHideResults = () => {
+        setTimeout(() => this.props.handleShowResults(false), 100)
+    };
+
     render() {
         const { classes } = this.props;
 
@@ -87,7 +91,7 @@ class SearchBox extends Component {
                                     fullWidth
                                     onChange={this.searchKnowledgeApi}
                                     onClick={() => this.props.handleShowResults(true)}
-                                    onBlur={() => this.props.handleShowResults(false)}
+                                    onBlur={this.waitToHideResults}
                                 />
                             </form>
                         </Grid>
