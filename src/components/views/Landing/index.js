@@ -35,11 +35,13 @@ class Landing extends Component {
                             align={'center'}
                             type={'display4'}
                             className={classes.headers} >
-                            NotifyME
+                            Notify Me
                         </Typography>
                     </Grid>
                     <Grid item xs={12} className={classes.headers}>
-                        <Typography align={'center'} type={'headline'}>Something clever and fantastic</Typography>
+                        <Typography align={'center'} type={'headline'}>
+                            Never miss a thing anymore
+                        </Typography>
                     </Grid>
                     <Grid item xs={12}>
                         <SearchContainer
