@@ -91,6 +91,7 @@ class SearchBox extends Component {
                                     <TextField
                                         type="search"
                                         placeholder="Search for movie, TV show, video game or music album you are interested in."
+                                        autoComplete="off"
                                         margin="normal"
                                         fullWidth
                                         id='item-search'
