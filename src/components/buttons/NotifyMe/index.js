@@ -59,7 +59,7 @@ class NotifyMe extends Component {
 
     handleDropdownLinkClick(e) {
         e.preventDefault();
-        let url = e.currentTarget.getAttribute("href");
+        let url = e.currentTarget.getAttribute("data-href");
 
         if (
             !helpers.isMobile() &&
@@ -107,18 +107,18 @@ class NotifyMe extends Component {
             }
 
             return (
-                <ListItem button key={i} divider={true}>
-                    <a
-                        className={currentItem + "-link addToCalendarLink"}
-                        onClick={self.handleDropdownLinkClick}
-                        href={helpers.buildUrl(
-                            self.state.event,
-                            currentItem
-                        )}
-                        target="_blank">
+                <ListItem button
+                          key={i}
+                          divider={true}
+                          className={currentItem + "-link addToCalendarLink"}
+                          onClick={self.handleDropdownLinkClick}
+                          data-href={helpers.buildUrl(
+                              self.state.event,
+                              currentItem
+                          )}
+                >
                         {icon}
                         {currentLabel}
-                    </a>
                 </ListItem>
             );
         });
