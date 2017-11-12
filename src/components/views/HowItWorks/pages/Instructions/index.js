@@ -44,7 +44,7 @@ class Instructions extends Component {
                                     1. Search for an upcoming movie, TV show, video game or music album by typing in the search box.
                                 </Typography>
                                 <Typography component="p">
-                                    2. Clicking one of the suggested items and open Item detail.
+                                    2. Click one of the suggested items and open its detail.
                                 </Typography>
                                 <Typography component="p">
                                     3. Choose one of the publication dates.
