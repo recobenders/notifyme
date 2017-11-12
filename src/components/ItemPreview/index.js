@@ -12,14 +12,29 @@ class ItemPreview extends Component {
         };
     }
 
-    // DRY
+    componentWillReceiveProps(nextProps){
+        this.handleItemChange(nextProps.item)
+    }
+
     componentDidMount() {
+        this.handleItemChange(this.props.item);
+    }
+
+    handleItemChange = (item) => {
+        this.sparqlSearch(item);
+    };
+
+    // BEWARE same function as in View > Item > index
+    sparqlSearch = (item) => {
         const sparql = `
-SELECT DISTINCT ?date WHERE {
-  ?item ?label "${this.props.item.name}"@en .
+SELECT DISTINCT ?date ?imdbId ?placeOfPublicationLabel WHERE {
+  ?item ?label "${item.name}"@en .
   ?item wdt:P577 ?date .
+  OPTIONAL { ?item wdt:P345 ?imdbId. }
+  ?statement ps:P577 ?date.
+  ?statement pq:P291 ?placeOfPublication.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 } ORDER BY ASC(?date)
-LIMIT 10
 `;
         const url = wdk.sparqlQuery(sparql);
 
@@ -42,7 +57,7 @@ LIMIT 10
 
                 this.setState({ releaseDates: releaseDates });
             });
-    }
+    };
 
     render() {
         const item = this.props.item;
