@@ -10,11 +10,13 @@ class ItemPreview extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            releaseDates: []
+            releaseDates: [],
+            loading: true
         };
     }
 
     componentWillReceiveProps(nextProps){
+        this.setState({releaseDates: [], loading: true});
         this.handleItemChange(nextProps.item)
     }
 
@@ -50,7 +52,7 @@ class ItemPreview extends Component {
                     }
                 }
 
-                this.setState({ releaseDates: releaseDates });
+                this.setState({ releaseDates: releaseDates, loading: false});
             });
     };
 
@@ -59,7 +61,7 @@ class ItemPreview extends Component {
         return (
             <Grid container justify="center" spacing={40}>
                 <Grid item xs={12}>
-                    <InfoContainer item={item} releaseDates={this.state.releaseDates}/>
+                    <InfoContainer item={item} releaseDates={this.state.releaseDates} loading={this.state.loading}/>
                 </Grid>
             </Grid>
         );

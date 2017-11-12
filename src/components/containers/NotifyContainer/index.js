@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import NotifyMe from '../../buttons/NotifyMe';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
+import { CircularProgress } from 'material-ui/Progress';
+import teal from 'material-ui/colors/teal';
 
 class NotifyContainer extends Component {
 
@@ -20,20 +22,29 @@ class NotifyContainer extends Component {
         }
 
         let futureEventsLabel = null;
-        if(Object.keys(futureEvents).length > 0) {
+        if(this.props.loading){
             futureEventsLabel = <Grid item xs={12}>
                 <Typography
                     align={'center'} >
-                    {this.props.item.name} is about to be published on:
+                    <CircularProgress style={{ color: teal['A700'] }} />
                 </Typography>
-            </Grid>;
+            </Grid>
         } else {
-            futureEventsLabel = <Grid item xs={12}>
-                <Typography
-                    align={'center'} >
-                    No upcoming release dates were found for this item.
-                </Typography>
-            </Grid>;
+            if(Object.keys(futureEvents).length > 0) {
+                futureEventsLabel = <Grid item xs={12}>
+                    <Typography
+                        align={'center'} >
+                        {this.props.item.name} is about to be published on:
+                    </Typography>
+                </Grid>;
+            } else {
+                futureEventsLabel = <Grid item xs={12}>
+                    <Typography
+                        align={'center'} >
+                        No upcoming release dates were found for this item.
+                    </Typography>
+                </Grid>;
+            }
         }
 
         return (

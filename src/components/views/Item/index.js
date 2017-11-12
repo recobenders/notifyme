@@ -19,11 +19,13 @@ class Item extends Component {
         super(props);
         this.state = {
             item: null,
-            releaseDates: {}
+            releaseDates: {},
+            loading: true
         };
     }
 
     componentWillReceiveProps(nextProps){
+        this.setState({releaseDates: {}, loading: true});
         this.handleItemChange(nextProps.location.state.item)
     }
 
@@ -59,7 +61,7 @@ class Item extends Component {
                     }
                 }
 
-                this.setState({ releaseDates: releaseDates });
+                this.setState({ releaseDates: releaseDates, loading: false });
             });
     };
 
@@ -90,7 +92,7 @@ class Item extends Component {
                     </Grid>
 
                     <Grid item xs={7} className={classes.itemContainer}>
-                        <InfoContainer item={item} releaseDates={this.state.releaseDates}/>
+                        <InfoContainer item={item} releaseDates={this.state.releaseDates} loading={this.state.loading}/>
                     </Grid>
                 </Grid>
             </div>
