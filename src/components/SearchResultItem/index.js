@@ -14,6 +14,10 @@ const styles = theme => ({
     card: {
         display: 'flex',
         maxHeight: 60,
+        '&:hover': {
+            backgroundColor: grey[100],
+            cursor: 'pointer'
+        }
     },
     details: {
         display: 'flex',
@@ -24,13 +28,13 @@ const styles = theme => ({
         flexDirection: 'row',
     },
     content: {
-        flex: '1 0 auto',
         paddingTop: 5,
         paddingLeft: 15,
     },
     cover: {
         width: 60,
         height: 60,
+        minWidth: 60
     },
     avatarDiv: {
         width: 35,
@@ -77,8 +81,6 @@ class SearchResultItem extends Component {
 
     render() {
         const { classes, item } = this.props;
-        if(item === undefined) return;
-        console.log(item);
         return (
             <Card className={classes.card} onClick={this.handleOnClick}>
                 <CardMedia
@@ -91,7 +93,7 @@ class SearchResultItem extends Component {
                         {this.getAvatarIcon(classes, item)}
                     </Avatar>
                 </div>
-                <div>
+                <div style={{overflow: 'hidden'}}>
                     <CardContent className={classes.content}>
                         <div className={classes.details}>
                             <Typography type="title">{item.name}</Typography>

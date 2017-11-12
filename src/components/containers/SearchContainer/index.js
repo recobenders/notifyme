@@ -27,6 +27,9 @@ class SearchContainer extends Component {
 
     handleResultSubmit = () => {
         this.props.handleSearchSubmit(this.state.searchResults);
+        if(this.props.hideResultsAfterSubmit){
+            this.setState({searchResults: []});
+        }
     };
 
     render() {
