@@ -42,13 +42,13 @@ SELECT DISTINCT ?date ?imdbId ?placeOfPublicationLabel WHERE {
                 let releaseDates = {};
                 for (let item of items) {
                     const date = new Date(item.date.value);
-                    const location = item.placeOfPublicationLabel.value;
-                    if(date in releaseDates) {
+                    const location = item.placeOfPublicationLabel ? item.placeOfPublicationLabel.value : null;
+                    if(date in releaseDates && location) {
                         releaseDates[date].locations.push(location);
                     } else {
                         releaseDates[date] = {
                             date: date,
-                            locations: [location]
+                            locations: location ? [location] : []
                         };
                     }
                 }
@@ -84,11 +84,7 @@ SELECT DISTINCT ?date ?imdbId ?placeOfPublicationLabel WHERE {
                     </Grid>
 
                     <Grid item xs={7} className={classes.itemContainer}>
-                        <InfoContainer item={item}/>
-                    </Grid>
-
-                    <Grid item xs={7}>
-                        <NotifyContainer item={item} releaseDates={this.state.releaseDates}/>
+                        <InfoContainer item={item} releaseDates={this.state.releaseDates}/>
                     </Grid>
                 </Grid>
             </div>
