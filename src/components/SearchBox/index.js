@@ -93,6 +93,7 @@ class SearchBox extends Component {
                                         placeholder="Search for movie, TV show, video game or music album you are interested in."
                                         margin="normal"
                                         fullWidth
+                                        id='item-search'
                                         onChange={this.searchKnowledgeApi}
                                         onClick={() => this.props.handleShowResults(true)}
                                         onBlur={this.waitToHideResults}
