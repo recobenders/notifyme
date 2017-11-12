@@ -19,6 +19,9 @@ const styles = theme => ({
     },
     divider: {
         marginTop: 20,
+    },
+    paragraph: {
+        marginBottom: 15
     }
 });
 
@@ -35,7 +38,7 @@ class Technologies extends Component {
                                 <Typography type="headline" component="h2">
                                     Motivation
                                 </Typography>
-                                <Typography component="p">
+                                <Typography component="p" className={classes.paragraph}>
                                     Our idea was to create a tool that will allow users to store notifications for any upcoming events.
                                     I believe it happens to most of us. You see a trailer to a great new movie and you immediately feel the desire to see the movie as soon as it is published.
                                     But how is one supposed to keep track of all these great future events?
@@ -43,7 +46,7 @@ class Technologies extends Component {
                                     That's why we decided to make it as simple as possible.
                                     You go to our website, search your desired item, click a button to add it to your calendar and ... BOOM. You are done.
                                 </Typography>
-                                <Typography component="p">
+                                <Typography component="p" className={classes.paragraph}>
                                     The first question that popped up in our minds was: 'Where to get this kind of data?'.
                                     The only logical answer to that question seemed tobe Wikidata.
                                     As we later found out Wikidata doesn't really store as many publication dates as we hoped it will.
