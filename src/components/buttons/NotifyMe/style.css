@@ -1,0 +1,7 @@
+.addToCalendarLink {
+    text-decoration: none;
+    color: #000;
+}
+.addToCalendarLink i {
+    margin-right: 15px;
+}
