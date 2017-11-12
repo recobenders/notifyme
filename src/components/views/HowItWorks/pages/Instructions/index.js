@@ -36,7 +36,7 @@ class Instructions extends Component {
                         <Card className={classes.card}>
                             <CardContent>
                                 <Typography type="headline" component="h2">
-                                    How to use Notify Me
+                                    How to use NotifyME
                                 </Typography>
                                 <Typography component="p">
                                     1. Search for an upcoming movie, TV show, video game or music album by typing in the search box.
