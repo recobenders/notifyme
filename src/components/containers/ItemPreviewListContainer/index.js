@@ -10,19 +10,16 @@ class ItemPreviewListContainer extends Component {
         return (
             <Grid container justify="center" spacing={40}>
                 <Grid item xs={12}>
-                    <List>
-                        {
-                            items.map((item, index) => {
-                                return (
-                                    <div key={index}>
-                                        <ListItem>
-                                            <ItemPreview item={item}/>
-                                        </ListItem>
-                                        <Divider/>
-                                    </div>);
-                            })
-                        }
-                    </List>
+                    {
+                        items.map((item, index) => {
+                            return (
+                                <div key={index}>
+                                    <ListItem>
+                                        <ItemPreview item={item}/>
+                                    </ListItem>
+                                </div>);
+                        })
+                    }
                 </Grid>
             </Grid>
         );
