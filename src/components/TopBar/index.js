@@ -3,7 +3,7 @@ import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import deepPurple from 'material-ui/colors/deepPurple'
+import teal from 'material-ui/colors/teal'
 
 const styles = theme => ({
     root: {
@@ -14,7 +14,7 @@ const styles = theme => ({
         textAlign: 'center'
     },
     appBar: {
-        background: deepPurple[500]
+        background: teal['A700']
     },
     title: {
         position: 'absolute',

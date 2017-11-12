@@ -5,11 +5,13 @@ import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
 import TextField from 'material-ui/TextField';
 import Search from 'material-ui-icons/Search';
+import { MuiThemeProvider} from 'material-ui/styles';
+import { theme } from '../../helpers/button_theme_override'
 
 const styles = theme => ({
     button: {
         margin: theme.spacing.unit,
-        flexGrow: 1
+        flexGrow: 1,
     },
     root: {
         flexGrow: 0,
@@ -97,10 +99,12 @@ class SearchBox extends Component {
                             </form>
                         </Grid>
                         <Grid item xs={3} style={{display: 'flex'}}>
-                            <Button raised className={classes.button} onClick={this.props.handleResultSubmit}>
-                                <Search className={classes.leftIcon} />
-                                {this.props.buttonText}
-                            </Button>
+                            <MuiThemeProvider theme={theme}>
+                                <Button className={classes.button} onClick={this.props.handleResultSubmit}>
+                                    <Search className={classes.leftIcon} />
+                                    {this.props.buttonText}
+                                </Button>
+                            </MuiThemeProvider>
                         </Grid>
                     </Grid>
                 </Grid>

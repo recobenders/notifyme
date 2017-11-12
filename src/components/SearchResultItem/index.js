@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import Card, { CardContent, CardMedia } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import grey from 'material-ui/colors/grey';
+import teal from 'material-ui/colors/teal';
 import MovieIcon from 'material-ui-icons/Movie';
 import MusicIcon from 'material-ui-icons/LibraryMusic';
 import TVIcon from 'material-ui-icons/Tv';
@@ -15,7 +16,7 @@ const styles = theme => ({
         display: 'flex',
         maxHeight: 60,
         '&:hover': {
-            backgroundColor: grey[100],
+            backgroundColor: teal[100],
             cursor: 'pointer'
         }
     },
