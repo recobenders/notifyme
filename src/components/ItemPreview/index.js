@@ -38,12 +38,14 @@ class ItemPreview extends Component {
                 for (let item of items) {
                     const date = new Date(item.date.value);
                     const location = item.placeOfPublicationLabel ? item.placeOfPublicationLabel.value : null;
-                    if(date in releaseDates && location) {
-                        releaseDates[date].locations.push(location);
+                    if(date in releaseDates) {
+                        if(location !== null) {
+                            releaseDates[date].locations.push(location);
+                        }
                     } else {
                         releaseDates[date] = {
                             date: date,
-                            locations: location ? [location] : []
+                            locations: location === null ? [] : [location]
                         };
                     }
                 }
