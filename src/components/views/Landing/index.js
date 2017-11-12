@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import SearchContainer from "../../containers/SearchContainer";
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
+import Divider from 'material-ui/Divider';
 import { withStyles } from 'material-ui/styles';
+import grey from 'material-ui/colors/grey';
 
 const styles = theme => ({
     root: {
@@ -10,7 +12,15 @@ const styles = theme => ({
         marginTop: 30
     },
     headers: {
+        marginBottom: 35,
+        paddingTop: 50
+    },
+    title: {
         marginBottom: 35
+    },
+    logo: {
+        width: 180,
+        height: 180
     }
 });
 
@@ -29,16 +39,25 @@ class Landing extends Component {
         const { classes } = this.props;
         return (
             <div className={classes.root}>
-                <Grid container spacing={40}>
+                <Grid container>
                     <Grid item xs={12}>
-                        <Typography
-                            align={'center'}
-                            type={'display4'}
-                            className={classes.headers} >
-                            Notify Me
-                        </Typography>
+                        <Grid container justify='center'>
+                            <Grid item xs={8}>
+                                <Grid container justify='center'>
+                                    <Grid item xs={3}>
+                                        <img src="/logoNME.png" className={classes.logo}/>
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <Typography type={'display3'} className={classes.headers}>
+                                            NotifyME
+                                        </Typography>
+                                    </Grid>
+                                    <Divider/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={12} className={classes.headers}>
+                    <Grid item xs={12} className={classes.title}>
                         <Typography align={'center'} type={'headline'}>
                             Never miss a thing anymore.
                         </Typography>
