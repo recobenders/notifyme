@@ -72,7 +72,7 @@ class SearchBox extends Component {
     };
 
     waitToHideResults = () => {
-        setTimeout(() => this.props.handleShowResults(false), 100)
+        setTimeout(() => this.props.handleShowResults(false), 200)
     };
 
     render() {
