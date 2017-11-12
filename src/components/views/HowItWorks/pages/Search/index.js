@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import Card, { CardContent, CardMedia } from 'material-ui/Card';
+import { DefaultPlayer as Video } from 'react-html5video';
+import 'react-html5video/dist/styles.css';
 import { withStyles } from 'material-ui/styles';
 
 const styles = theme => ({
@@ -23,14 +25,19 @@ class Search extends Component {
 
         return (
             <div className={classes.root}>
-                <Grid container spacing={40}>
+                <Grid container spacing={40} justify="center">
+                    <Grid item xs={8}>
+                        <Video autoPlay loop muted
+                               controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
+                               onCanPlayThrough={() => {
+                                   // Do stuff
+                               }}>
+                            <source src="search.mp4" type="video/webm" />
+                            <track label="English" kind="subtitles" srcLang="en" src="http://source.vtt" default />
+                        </Video>
+                    </Grid>
                     <Grid item xs={12}>
                         <Card className={classes.card}>
-                            <CardMedia
-                                className={classes.media}
-                                image="/search.png"
-                                title="Search"
-                            />
                             <CardContent>
                                 <Typography type="headline" component="h2">
                                     Search
