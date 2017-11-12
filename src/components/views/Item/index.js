@@ -80,7 +80,7 @@ class Item extends Component {
 
         return (
             <div>
-                <Grid container justify="center" spacing={40}>
+                <Grid container justify="center">
                     <Grid item xs={12} className={classes.itemContainer}>
                         <SearchContainer
                             handleSearchSubmit={this.handleSearchSubmit}
