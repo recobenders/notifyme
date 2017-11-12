@@ -3,6 +3,7 @@ import SearchContainer from "../../containers/SearchContainer/index";
 import ItemPreviewListContainer from "../../containers/ItemPreviewListContainer";
 import Grid from 'material-ui/Grid';
 import { withStyles } from 'material-ui/styles';
+import { withRouter } from 'react-router-dom'
 
 const styles = theme => ({
     root: {
@@ -15,14 +16,28 @@ class ItemList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: props.location.state.items
+            items: []
         };
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.handleItemsChanged(nextProps.location.state.items);
+    };
+
+    componentDidMount(){
+        this.handleItemsChanged(this.props.location.state.items);
+    };
+
+    handleItemsChanged = (items) => {
+        this.setState({items: items})
+    };
+
     handleSearchSubmit = (items) => {
-        this.setState({
-            items: items
-        })
+        this.props.history.push({
+                pathname: "/item-list",
+                state: {items: items}
+            }
+        );
     };
 
     render() {
@@ -46,4 +61,4 @@ class ItemList extends Component {
     }
 }
 
-export default withStyles(styles)(ItemList);
+export default withStyles(styles)(withRouter(ItemList));
