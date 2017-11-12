@@ -56,7 +56,7 @@ class NotifyContainer extends Component {
                                     {futureEvents[key].locations.join(', ')}
                                 </Typography>
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={6} align="right">
                                 <NotifyMe item={this.props.item} date={futureEvents[key].date} />
                             </Grid>
                         </Grid>
