@@ -89,7 +89,7 @@ class SearchBox extends Component {
                             <form onSubmit={this.handleFormSubmit}>
                                 <TextField
                                     type="search"
-                                    placeholder="Search for movie, TV show, video game or music album you are interested in"
+                                    placeholder="Search for movie, TV show, video game or music album you are interested in."
                                     margin="normal"
                                     fullWidth
                                     onChange={this.searchKnowledgeApi}
