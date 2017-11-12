@@ -29,7 +29,9 @@ class Instructions extends Component {
                     <Grid item xs={7}>
                         <Video autoPlay loop muted
                                controls={['PlayPause', 'Seek', 'Time']} >
+                            <source src="/search.webm" type="video/webm" />
                             <source src="/search.mp4" type="video/mp4" />
+                            Your browser does not support the <code>video</code> element.
                         </Video>
                     </Grid>
                     <Grid item xs={7}>
