@@ -1,7 +1,17 @@
 {
   "name": "nko_2017",
-  "version": "0.1.0",
+  "productName": "NotifyME",
+  "version": "1.0.0",
+  "description": "Search for an upcoming movie, TV show, video game or music album you are interested in and add notification for its release to your calendar.",
   "private": true,
+  "keywords": [
+    "notifications",
+    "reminder"
+  ],
+  "contributors": [
+    "Michal Granec <https://github.com/rushembo>",
+    "Juraj Visnovsky <https://github.com/juri13>"
+  ],
   "dependencies": {
     "axios": "^0.17.0",
     "font-awesome": "^4.7.0",
