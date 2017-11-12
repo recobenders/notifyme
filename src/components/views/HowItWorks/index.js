@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Search from './pages/Search';
+import Instructions from './pages/Instructions';
+import Technologies from './pages/Technologies';
 import { ScrollPage, Section } from 'react-scrollpage';
 import { withStyles } from 'material-ui/styles';
 
@@ -16,12 +17,13 @@ class HowItWorks extends Component {
 
         return (
             <ScrollPage curPage={1}
-                        totalPage={3}>
+                        totalPage={2}>
                 <Section>
-                    <Search/>
+                    <Instructions/>
                 </Section>
-                <Section>Page 2</Section>
-                <Section>Page 3</Section>
+                <Section>
+                    <Technologies/>
+                </Section>
             </ScrollPage>
         );
     }
