@@ -6,14 +6,18 @@ import Typography from 'material-ui/Typography';
 import grey from 'material-ui/colors/grey';
 import MovieIcon from 'material-ui-icons/Movie';
 import MusicIcon from 'material-ui-icons/LibraryMusic';
-import TVShowIcon from 'material-ui-icons/VideoLabel';
-import GameIcon from 'material-ui-icons/Games';
+import TVIcon from 'material-ui-icons/Tv';
+import GameIcon from 'material-ui-icons/VideogameAsset';
 import Avatar from 'material-ui/Avatar';
 
 const styles = theme => ({
     card: {
         display: 'flex',
         maxHeight: 60,
+        '&:hover': {
+            backgroundColor: grey[100],
+            cursor: 'pointer'
+        }
     },
     details: {
         display: 'flex',
@@ -24,13 +28,13 @@ const styles = theme => ({
         flexDirection: 'row',
     },
     content: {
-        flex: '1 0 auto',
         paddingTop: 5,
         paddingLeft: 15,
     },
     cover: {
         width: 60,
         height: 60,
+        minWidth: 60
     },
     avatarDiv: {
         width: 35,
@@ -59,7 +63,7 @@ class SearchResultItem extends Component {
         if(mediaType === 'Movie'){
             return <MovieIcon className={classes.svgIcon}/>
         } else if(mediaType === 'TVSeries' || mediaType === 'TVEpisode'){
-            return <TVShowIcon className={classes.svgIcon}/>
+            return <TVIcon className={classes.svgIcon}/>
         } else if(mediaType === 'MusicAlbum'){
             return <MusicIcon className={classes.svgIcon}/>
         } else if(mediaType === 'VideoGame'){
@@ -77,7 +81,6 @@ class SearchResultItem extends Component {
 
     render() {
         const { classes, item } = this.props;
-        console.log(item);
         return (
             <Card className={classes.card} onClick={this.handleOnClick}>
                 <CardMedia
@@ -90,10 +93,10 @@ class SearchResultItem extends Component {
                         {this.getAvatarIcon(classes, item)}
                     </Avatar>
                 </div>
-                <div>
+                <div style={{overflow: 'hidden'}}>
                     <CardContent className={classes.content}>
                         <div className={classes.details}>
-                            <Typography type="title">{item.name.replace(/&amp;/g, '&')}</Typography>
+                            <Typography type="title">{item.name}</Typography>
                             <Typography type="subheading" color="secondary">
                                 {item.description}
                             </Typography>

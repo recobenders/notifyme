@@ -7,7 +7,7 @@ import { withStyles } from 'material-ui/styles';
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        marginTop: 30,
+        marginTop: 30
     },
     headers: {
         marginBottom: 35
@@ -48,7 +48,9 @@ class Landing extends Component {
                     <Grid item xs={12}>
                         <SearchContainer
                             handleSearchSubmit={this.handleSearchSubmit}
-                            buttonText={'More'}/>
+                            buttonText={'More'}
+                            hideResultsAfterSubmit={false}
+                        />
                     </Grid>
                 </Grid>
             </div>

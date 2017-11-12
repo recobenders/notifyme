@@ -9,6 +9,7 @@ import Search from 'material-ui-icons/Search';
 const styles = theme => ({
     button: {
         margin: theme.spacing.unit,
+        flexGrow: 1
     },
     root: {
         flexGrow: 0,
@@ -65,23 +66,36 @@ class SearchBox extends Component {
             });
     };
 
+    handleFormSubmit = (event) => {
+        event.preventDefault();
+        this.props.handleResultSubmit();
+    };
+
+    waitToHideResults = () => {
+        setTimeout(() => this.props.handleShowResults(false), 100)
+    };
+
     render() {
         const { classes } = this.props;
 
         return (
             <Grid container justify="center" className={classes.root}>
-                <Grid item xs={7}>
+                <Grid item xs={8}>
                     <Grid container spacing={8}>
-                        <Grid item xs={10}>
-                            <TextField
-                                type="search"
-                                placeholder="Search for movie, TV show, video game or music album you are interested in"
-                                margin="normal"
-                                fullWidth
-                                onChange={this.searchKnowledgeApi}
-                            />
+                        <Grid item xs={9}>
+                            <form onSubmit={this.handleFormSubmit}>
+                                <TextField
+                                    type="search"
+                                    placeholder="Search for movie, TV show, video game or music album you are interested in"
+                                    margin="normal"
+                                    fullWidth
+                                    onChange={this.searchKnowledgeApi}
+                                    onClick={() => this.props.handleShowResults(true)}
+                                    onBlur={this.waitToHideResults}
+                                />
+                            </form>
                         </Grid>
-                        <Grid item xs={2}>
+                        <Grid item xs={3} style={{display: 'flex'}}>
                             <Button raised className={classes.button} onClick={this.props.handleResultSubmit}>
                                 <Search className={classes.leftIcon} />
                                 {this.props.buttonText}
