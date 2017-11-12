@@ -56,8 +56,8 @@ class Technologies extends Component {
                                     That's why we decided to use Google Knowledge Graph API to support our search box.
                                     Knowledge Graph API actually brings two drawbacks to our little application.
                                     1) Search returns many items that were already published. We are not really interested in those, as we tend to look far to the future.
-                                    2) We cannot guarantee we actually succeeded in matching Knowledge Graph Entity to a Wikidata Entity. E.g. consider It. The first movie was published in 1990, the remake was published in 2017. In such scenario, our system may fail.
-                                    But that's the price we decided to pay in order to have an fast application.
+                                    2) We cannot guarantee we actually succeeded in matching Knowledge Graph Entity to a Wikidata Entity. For example, consider It. The first movie was published in 1990 and the remake was published in 2017. In such scenario, our system may fail.
+                                    But that's the price we decided to pay in order to have a fast application.
                                 </Typography>
                             </CardContent>
                         </Card>
