@@ -50,7 +50,8 @@ class SearchContainer extends Component {
     handleShowResults = (value) => {
         if(!this._mounted) { return; }
         const itemSearchElement = document.getElementById('item-search');
-        const top = itemSearchElement.getBoundingClientRect().top + itemSearchElement.clientHeight;
+        const top = itemSearchElement.getBoundingClientRect().top + itemSearchElement.clientHeight + window.pageYOffset;
+
         this.setState({showResults: value, height: top})
     };
 
