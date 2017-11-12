@@ -6,16 +6,21 @@ import Typography from 'material-ui/Typography';
 class NotifyContainer extends Component {
 
     render() {
-        const futureEvents = this.props.releaseDates.filter(releaseDate =>
-            releaseDate >= new Date()
-        );
+        const releaseDates = this.props.releaseDates;
+        let futureEvents = {};
+        let pastEvents = {};
 
-        const pastEvents = this.props.releaseDates.filter(releaseDate =>
-            releaseDate < new Date()
-        );
+        for (var item in releaseDates) {
+            let releaseDate = releaseDates[item].date;
+            if (releaseDate >= new Date()) {
+                futureEvents[item] = releaseDates[item];
+            } else {
+                pastEvents[item] = releaseDates[item];
+            }
+        }
 
         let futureEventsLabel = null;
-        if(futureEvents.length > 0) {
+        if(Object.keys(futureEvents).length > 0) {
             futureEventsLabel = <Grid item xs={12}>
                 <Typography
                     align={'center'} >
@@ -35,18 +40,25 @@ class NotifyContainer extends Component {
             <div>
                 <Grid container spacing={16} justify="center" >
                     {futureEventsLabel}
-                    {futureEvents.map((releaseDate, i) =>
+                    {Object.keys(futureEvents).map((key, i) =>
                         <Grid item xs={12} key={i}>
                             <Grid container spacing={16}>
-                                <Grid item xs={6}>
+                                <Grid item xs={3}>
                                     <Typography
                                         align={'center'}
                                         type={'body2'} >
-                                        {releaseDate.toISOString().substring(0, 10)}
+                                        {futureEvents[key].date.toISOString().substring(0, 10)}
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={3}>
+                                    <Typography
+                                        align={'center'}
+                                        type={'caption'} >
+                                        {futureEvents[key].locations.join(', ')}
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <NotifyMe item={this.props.item} date={releaseDate} />
+                                    <NotifyMe item={this.props.item} date={futureEvents[key].date} />
                                 </Grid>
                             </Grid>
                         </Grid>

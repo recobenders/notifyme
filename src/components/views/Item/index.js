@@ -18,7 +18,7 @@ class Item extends Component {
         super(props);
         this.state = {
             item: null,
-            releaseDates: []
+            releaseDates: {}
         };
     }
 
@@ -37,17 +37,34 @@ class Item extends Component {
 
     sparqlSearch = (item) => {
         const sparql = `
-SELECT DISTINCT ?date WHERE {
+SELECT DISTINCT ?date ?imdbId ?placeOfPublicationLabel WHERE {
   ?item ?label "${item.name}"@en .
   ?item wdt:P577 ?date .
+  OPTIONAL { ?item wdt:P345 ?imdbId. }
+  ?statement ps:P577 ?date.
+  ?statement pq:P291 ?placeOfPublication.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 } ORDER BY ASC(?date)
-LIMIT 10
 `;
         const url = wdk.sparqlQuery(sparql);
 
         axios.get(url)
             .then(res => {
-                const releaseDates = res.data.results.bindings.map(item => new Date(item.date.value));
+                const items = res.data.results.bindings;
+                let releaseDates = {};
+                for (let item of items) {
+                    const date = new Date(item.date.value);
+                    const location = item.placeOfPublicationLabel.value;
+                    if(date in releaseDates) {
+                        releaseDates[date].locations.push(location);
+                    } else {
+                        releaseDates[date] = {
+                            date: date,
+                            locations: [location]
+                        };
+                    }
+                }
+
                 this.setState({ releaseDates: releaseDates });
             });
     };
