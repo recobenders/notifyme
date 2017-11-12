@@ -26,7 +26,7 @@ class Instructions extends Component {
         return (
             <div className={classes.root}>
                 <Grid container spacing={40} justify="center">
-                    <Grid item xs={10}>
+                    <Grid item xs={7}>
                         <Video autoPlay loop muted
                                controls={['PlayPause', 'Seek', 'Time']} >
                             <source src="/search.mp4" type="video/mp4" />
