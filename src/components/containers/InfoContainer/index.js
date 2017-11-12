@@ -49,7 +49,7 @@ class InfoContainer extends Component {
                 title={item.name}
             />;
         }
-No upcoming release dates were found for this item.
+        
         return (
             <Grid container spacing={24}>
                 <Grid item xs={12}>
