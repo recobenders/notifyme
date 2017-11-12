@@ -76,7 +76,7 @@ class SearchBox extends Component {
 
         return (
             <Grid container justify="center" className={classes.root}>
-                <Grid item xs={7}>
+                <Grid item xs={8}>
                     <Grid container spacing={8}>
                         <Grid item xs={9}>
                             <form onSubmit={this.handleFormSubmit}>
@@ -86,6 +86,8 @@ class SearchBox extends Component {
                                     margin="normal"
                                     fullWidth
                                     onChange={this.searchKnowledgeApi}
+                                    onClick={() => this.props.handleShowResults(true)}
+                                    onBlur={() => this.props.handleShowResults(false)}
                                 />
                             </form>
                         </Grid>
