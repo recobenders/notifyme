@@ -1,4 +1,4 @@
-import { createMuiTheme} from 'material-ui/styles';
+import { createMuiTheme } from 'material-ui/styles';
 
 export const blueTheme = createMuiTheme({
     overrides: {
@@ -18,6 +18,13 @@ export const blueTheme = createMuiTheme({
                 }
             },
         },
+        MuiInput: {
+            inkbar: {
+                "&:after": {
+                    backgroundColor: '#E64A19'
+                }
+            }
+        }
     },
 });
 

@@ -87,15 +87,17 @@ class SearchBox extends Component {
                     <Grid container spacing={8}>
                         <Grid item xs={9}>
                             <form onSubmit={this.handleFormSubmit}>
-                                <TextField
-                                    type="search"
-                                    placeholder="Search for movie, TV show, video game or music album you are interested in."
-                                    margin="normal"
-                                    fullWidth
-                                    onChange={this.searchKnowledgeApi}
-                                    onClick={() => this.props.handleShowResults(true)}
-                                    onBlur={this.waitToHideResults}
-                                />
+                                <MuiThemeProvider theme={blueTheme}>
+                                    <TextField
+                                        type="search"
+                                        placeholder="Search for movie, TV show, video game or music album you are interested in."
+                                        margin="normal"
+                                        fullWidth
+                                        onChange={this.searchKnowledgeApi}
+                                        onClick={() => this.props.handleShowResults(true)}
+                                        onBlur={this.waitToHideResults}
+                                    />
+                                </MuiThemeProvider>
                             </form>
                         </Grid>
                         <Grid item xs={3} style={{display: 'flex'}}>
