@@ -68,6 +68,7 @@ class SearchBox extends Component {
 
     handleFormSubmit = (event) => {
         event.preventDefault();
+        this.props.handleShowResults(false);
         this.props.handleResultSubmit();
     };
 
