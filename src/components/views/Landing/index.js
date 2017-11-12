@@ -35,7 +35,6 @@ const styles = theme => ({
     avatar: {
         width: 100,
         height: 100,
-        marginLeft: 50,
         backgroundColor: deepOrange[300]
     },
     svgIcon: {
@@ -97,25 +96,25 @@ class Landing extends Component {
                         <Grid container justify='center'>
                             <Grid item xs={8}>
                                 <Grid container style={{textAlign: 'center'}}>
-                                    <Grid item xs={3} className={classes.twoLine}>
+                                    <Grid item xs={3} className={classes.twoLine} align="center">
                                         <Avatar className={classes.avatar}>
                                             <MovieIcon className={classes.svgIcon}/>
                                         </Avatar>
                                         <Typography className={classes.iconText} type='subheading'>Movies</Typography>
                                     </Grid>
-                                    <Grid item xs={3} className={classes.twoLine}>
+                                    <Grid item xs={3} className={classes.twoLine} align="center">
                                         <Avatar className={classes.avatar}>
                                             <TVIcon className={classes.svgIcon}/>
                                         </Avatar>
                                         <Typography className={classes.iconText} type='subheading'>TV Shows</Typography>
                                     </Grid>
-                                    <Grid item xs={3} className={classes.twoLine}>
+                                    <Grid item xs={3} className={classes.twoLine} align="center">
                                         <Avatar className={classes.avatar}>
                                             <GameIcon className={classes.svgIcon}/>
                                         </Avatar>
                                         <Typography className={classes.iconText} type='subheading'>Video Games</Typography>
                                     </Grid>
-                                    <Grid item xs={3} className={classes.twoLine}>
+                                    <Grid item xs={3} className={classes.twoLine} align="center">
                                         <Avatar className={classes.avatar}>
                                             <MusicIcon className={classes.svgIcon}/>
                                         </Avatar>
