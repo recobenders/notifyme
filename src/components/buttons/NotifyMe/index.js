@@ -95,7 +95,7 @@ class NotifyMe extends Component {
     renderDropdown() {
         let self = this;
 
-        let items = this.props.listItems.map(listItem => {
+        let items = this.props.listItems.map((listItem, i) => {
             let currentItem = Object.keys(listItem)[0];
             let currentLabel = listItem[currentItem];
 
@@ -109,7 +109,7 @@ class NotifyMe extends Component {
             }
 
             return (
-                <ListItem button>
+                <ListItem button key={i}>
                     <a
                         className={currentItem + "-link"}
                         onClick={self.handleDropdownLinkClick}

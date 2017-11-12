@@ -4,7 +4,7 @@ import Jimp from 'jimp';
 import ItemProperty from '../../ItemProperty';
 import Grid from 'material-ui/Grid';
 import { CircularProgress } from 'material-ui/Progress';
-import Typography from 'material-ui/Typography';
+import { Link } from 'react-router-dom'
 import { withStyles } from 'material-ui/styles';
 
 const styles = theme => ({
@@ -66,27 +66,32 @@ class InfoContainer extends Component {
         if (this.state.imageSrc) {
             image = <img
                 src={this.state.imageSrc}
-                alt={item.name.replace(/&amp;/g, '&')}
+                alt={item.name}
             />;
         } else {
             image = <CircularProgress className={classes.progress} size={50} />;
         }
 
+        let link = null;
+        if (item.url) {
+            link = <Link to={item.url}>{item.url}</Link>;
+        } else {
+            link = 'N/A';
+        }
+
         return (
-            <div>
-                <Grid container spacing={24}>
-                    <Grid item xs={6}>
-                        {image}
-                    </Grid>
-                    <Grid item xs={6}>
-                        <ItemProperty label="Name:" value={item.name}/>
-                        <ItemProperty label="Type:" value={item['@type'].join(',') || 'N/A'}/>
-                        <ItemProperty label="Description:" value={description}/>
-                        <ItemProperty label="Detailed Description:" value={detailedDescription}/>
-                        <ItemProperty label="Link:" value={item.url || 'N/A'}/>
-                    </Grid>
+            <Grid container spacing={24}>
+                <Grid item xs={6}>
+                    {image}
                 </Grid>
-            </div>
+                <Grid item xs={6}>
+                    <ItemProperty label="Name:" value={item.name}/>
+                    <ItemProperty label="Type:" value={item['@type'].join(',') || 'N/A'}/>
+                    <ItemProperty label="Description:" value={description}/>
+                    <ItemProperty label="Detailed Description:" value={detailedDescription}/>
+                    <ItemProperty label="Link:" value={link}/>
+                </Grid>
+            </Grid>
         );
     }
 }
