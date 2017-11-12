@@ -79,7 +79,7 @@ class InfoContainer extends Component {
                 title={item.name}
             />;
         }
-        
+
         return (
             <Grid container spacing={24}>
                 <Grid item xs={12}>
@@ -102,7 +102,7 @@ class InfoContainer extends Component {
 
                             <Divider className={classes.divider} />
 
-                            <NotifyContainer item={item} releaseDates={this.props.releaseDates}/>
+                            <NotifyContainer item={item} releaseDates={this.props.releaseDates} loading={this.props.loading}/>
                         </CardContent>
                     </Card>
                 </Grid>
