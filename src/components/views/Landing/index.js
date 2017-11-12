@@ -12,7 +12,8 @@ const styles = theme => ({
     },
     headers: {
         marginBottom: 35,
-        paddingTop: 50
+        paddingTop: 50,
+        fontSize: '4.0rem'
     },
     title: {
         marginBottom: 35
@@ -43,10 +44,10 @@ class Landing extends Component {
                         <Grid container justify='center'>
                             <Grid item xs={8}>
                                 <Grid container justify='center'>
-                                    <Grid item>
+                                    <Grid item xs={6} align="right">
                                         <img src="/logoNME.png" className={classes.logo}/>
                                     </Grid>
-                                    <Grid item xs={4}>
+                                    <Grid item xs={6}>
                                         <Typography type={'display3'} className={classes.headers}>
                                             NotifyME
                                         </Typography>
