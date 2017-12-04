@@ -13,11 +13,12 @@ class NotifyContainer extends Component {
         let pastEvents = {};
 
         for (var item in releaseDates) {
-            let releaseDate = releaseDates[item].date;
+            let locations = releaseDates[item].locations;
+            let releaseDate = new Date(releaseDates[item].date);
             if (releaseDate >= new Date()) {
-                futureEvents[item] = releaseDates[item];
+                futureEvents[item] = { locations: locations, date: releaseDate };
             } else {
-                pastEvents[item] = releaseDates[item];
+                pastEvents[item] = { locations: locations, date: releaseDate };
             }
         }
 
