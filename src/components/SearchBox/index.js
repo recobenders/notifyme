@@ -21,8 +21,6 @@ const styles = theme => ({
     },
 });
 
-const Knowledge = require('knowledge-node')({ serverKey: process.env.REACT_APP_KNOWLEDGE_API_KEY });
-
 class SearchBox extends Component {
     constructor(props) {
         super(props);
@@ -43,27 +41,23 @@ class SearchBox extends Component {
     };
 
     knowledgeSearch = (input) => {
-        const types = [
-            Knowledge.types.movies,
-            Knowledge.types.musicAlbum,
-            Knowledge.types.tvEpisode,
-            Knowledge.types.tvSeries,
-            Knowledge.types.videoGame
-        ];
-        const limit = 10;
-        let params;
-
-        try {
-            params = Knowledge.buildParams(input, types, limit);
-        } catch(e) {
-            return Promise.resolve({ options: [] });
-        }
-
-        return Knowledge.search(params)
-            .then(body => {
-                this.props.handleResultUpdate(body.itemListElement);
+        var self = this;
+        fetch('/api/search/knowledge_graph', {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                input: input
             })
-            .catch(error => {
+        })
+            .then(res => res.json())
+            .then(function(json) {
+                self.props.handleResultUpdate(json.items);
+            })
+            .catch(function(err) {
+                console.log(err);
                 return { options: [] };
             });
     };

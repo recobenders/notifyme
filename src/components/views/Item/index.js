@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import wdk from 'wikidata-sdk';
 import InfoContainer from "../../containers/InfoContainer";
 import Grid from 'material-ui/Grid';
 import SearchContainer from "../../containers/SearchContainer"
 import { withStyles } from 'material-ui/styles';
-import SparqlHelperClass from "../../../helpers/sparql_helper";
-const sparqlHelper = new SparqlHelperClass();
 
 const styles = theme => ({
     itemContainer: {
@@ -35,33 +31,28 @@ class Item extends Component {
 
     handleItemChange = (item) => {
         this.setState({item: item});
-        this.sparqlSearch(item);
+        this.wikidataSearch(item);
     };
 
-    sparqlSearch = (item) => {
-        const sparql = sparqlHelper.retrieveSparqlQuery(item);
-        const url = wdk.sparqlQuery(sparql);
-
-        axios.get(url)
-            .then(res => {
-                const items = res.data.results.bindings;
-                let releaseDates = {};
-                for (let item of items) {
-                    const date = new Date(item.date.value);
-                    const location = item.placeOfPublicationLabel ? item.placeOfPublicationLabel.value : null;
-                    if(date in releaseDates) {
-                        if(location !== null) {
-                            releaseDates[date].locations.push(location);
-                        }
-                    } else {
-                        releaseDates[date] = {
-                            date: date,
-                            locations: location === null ? [] : [location]
-                        };
-                    }
-                }
-
-                this.setState({ releaseDates: releaseDates, loading: false });
+    wikidataSearch = (item) => {
+        var self = this;
+        fetch('/api/search/wikidata', {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                input: item
+            })
+        })
+            .then(res => res.json())
+            .then(function(json) {
+                self.setState({ releaseDates: json.releaseDates, loading: false });
+            })
+            .catch(function(err) {
+                console.log(err);
+                self.setState({ loading: false });
             });
     };
 
