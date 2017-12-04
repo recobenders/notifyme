@@ -13,11 +13,10 @@
     "Juraj Visnovsky <https://github.com/juri13>"
   ],
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.17.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "font-awesome": "^4.7.0",
-    "foreman": "^2.0.0",
     "history": "^4.7.2",
     "jimp": "0.2.27",
     "knowledge-node": "^1.0.0",
